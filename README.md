@@ -1,1 +1,0 @@
-# smart-tradz-chart-lib

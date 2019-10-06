@@ -1,0 +1,37 @@
+{
+  "name": "chart-lib",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0",
+    "@ng-bootstrap/ng-bootstrap": "^4.0.1",
+    "@types/bootstrap": "^4.2.0",
+    "@types/jquery": "^3.3.29",
+    "@types/chart.js": "^2.8.5",
+    "angular-plotly.js": "1.3.2",
+    "bootstrap": "^4.2.1",
+    "jquery": "^3.3.1",
+    "chart.js": "^2.8.0",
+    "chartjs-adapter-luxon": "^0.2.0",
+    "chartjs-plugin-annotation": "^0.5.7",
+    "chartjs-plugin-datalabels": "^0.7.0",
+    "chartjs-plugin-waterfall": "^1.0.3",
+    "ng2-charts": "2.2.3",
+    "d3": "^5.12.0",
+    "peity": "^3.3.0",
+    "plotly.js": "^1.49.4"
+  },
+  "main": "bundles/chart-lib.umd.js",
+  "module": "fesm5/chart-lib.js",
+  "es2015": "fesm2015/chart-lib.js",
+  "esm5": "esm5/chart-lib.js",
+  "esm2015": "esm2015/chart-lib.js",
+  "fesm5": "fesm5/chart-lib.js",
+  "fesm2015": "fesm2015/chart-lib.js",
+  "typings": "chart-lib.d.ts",
+  "metadata": "chart-lib.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
