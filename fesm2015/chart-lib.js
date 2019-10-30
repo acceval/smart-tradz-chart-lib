@@ -1854,6 +1854,21 @@ class WaterfallChartComponent {
      * @return {?}
      */
     ngOnInit() {
+        this.dataProcessing();
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
+        if (changes['waterfallChartData']) {
+            this.dataProcessing();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    dataProcessing() {
         if (!this.waterfallChartOptions || Object.keys(this.waterfallChartOptions).length == 0) {
             this.waterfallChartOptions = new GlobalChartOptions().waterfallChartOptions;
         }

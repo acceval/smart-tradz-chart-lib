@@ -1983,6 +1983,28 @@
          * @return {?}
          */
             function () {
+                this.dataProcessing();
+            };
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        WaterfallChartComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+                if (changes['waterfallChartData']) {
+                    this.dataProcessing();
+                }
+            };
+        /**
+         * @return {?}
+         */
+        WaterfallChartComponent.prototype.dataProcessing = /**
+         * @return {?}
+         */
+            function () {
                 var _this_1 = this;
                 if (!this.waterfallChartOptions || Object.keys(this.waterfallChartOptions).length == 0) {
                     this.waterfallChartOptions = new GlobalChartOptions().waterfallChartOptions;

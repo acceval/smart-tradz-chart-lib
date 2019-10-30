@@ -1,5 +1,5 @@
-import { OnInit, EventEmitter } from '@angular/core';
-export declare class WaterfallChartComponent implements OnInit {
+import { OnInit, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+export declare class WaterfallChartComponent implements OnInit, OnChanges {
     waterfallChartData: WaterfallChartData[];
     waterfallExtendedChartData: WaterfallChartData[];
     waterfallChartOptions: any;
@@ -10,6 +10,8 @@ export declare class WaterfallChartComponent implements OnInit {
     waterfallChartConfig: any;
     constructor();
     ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    dataProcessing(): void;
     chartClicked(event: any): void;
     chartHovered(event: any): void;
     chartAfterPlotted(event: any): void;
