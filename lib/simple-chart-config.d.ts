@@ -18,5 +18,7 @@ export declare class SimpleChartConfig {
     fontColor?: string;
     gridColor?: string;
     isHorizontalBar?: boolean;
+    xAxisBeginAtZero?: boolean;
+    yAxisBeginAtZero?: boolean;
     static populateChartConfig(chartOptions: ChartOptions, chartConfig: SimpleChartConfig): ChartOptions;
 }

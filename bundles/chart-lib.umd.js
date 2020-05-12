@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('angular-plotly.js'), require('plotly.js/dist/plotly.js'), require('chartjs-plugin-datalabels'), require('ng2-charts'), require('d3'), require('chartjs-plugin-waterfall'), require('@angular/core'), require('chart.js')) :
-    typeof define === 'function' && define.amd ? define('chart-lib', ['exports', '@angular/common', 'angular-plotly.js', 'plotly.js/dist/plotly.js', 'chartjs-plugin-datalabels', 'ng2-charts', 'd3', 'chartjs-plugin-waterfall', '@angular/core', 'chart.js'], factory) :
-    (factory((global['chart-lib'] = {}),global.ng.common,global.angularPlotly_js,global.PlotlyJS,global.pluginDataLabels,global.ng2Charts,global.d3$1,global.waterfallPlugin,global.ng.core,global.Chart));
-}(this, (function (exports,common,angularPlotly_js,PlotlyJS,pluginDataLabels,ng2Charts,d3$1,waterfallPlugin,i0,Chart) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('angular-plotly.js'), require('plotly.js/dist/plotly.js'), require('chartjs-plugin-annotation'), require('chartjs-plugin-datalabels'), require('ng2-charts'), require('d3'), require('chartjs-plugin-waterfall'), require('@angular/core'), require('chart.js')) :
+    typeof define === 'function' && define.amd ? define('chart-lib', ['exports', '@angular/common', 'angular-plotly.js', 'plotly.js/dist/plotly.js', 'chartjs-plugin-annotation', 'chartjs-plugin-datalabels', 'ng2-charts', 'd3', 'chartjs-plugin-waterfall', '@angular/core', 'chart.js'], factory) :
+    (factory((global['chart-lib'] = {}),global.ng.common,global.angularPlotly_js,global.PlotlyJS,global.ChartAnnotation,global.pluginDataLabels,global.ng2Charts,global.d3$1,global.waterfallPlugin,global.ng.core,global.Chart));
+}(this, (function (exports,common,angularPlotly_js,PlotlyJS,ChartAnnotation,pluginDataLabels,ng2Charts,d3$1,waterfallPlugin,i0,Chart) { 'use strict';
 
     /**
      * @fileoverview added by tsickle
@@ -72,6 +72,8 @@
             this.fontColor = 'rgba(0,0,0,0.5)';
             this.gridColor = 'rgba(0,0,0,0.1)';
             this.isHorizontalBar = false;
+            this.xAxisBeginAtZero = false;
+            this.yAxisBeginAtZero = false;
         }
         /**
          * @param {?} chartOptions
@@ -103,9 +105,10 @@
                         color: chartConfig.gridColor
                     };
                     chartOptions.scales.yAxes[0].ticks = {
+                        beginAtZero: chartConfig.yAxisBeginAtZero,
                         fontFamily: chartConfig.fontFamily,
                         fontSize: chartConfig.fontSize,
-                        fontColor: chartConfig.fontColor
+                        fontColor: chartConfig.fontColor,
                     };
                 }
                 if (chartConfig.yAxisRightLabel.length > 0) {
@@ -118,6 +121,7 @@
                                 labelString: chartConfig.yAxisRightLabel
                             },
                             ticks: {
+                                beginAtZero: chartConfig.yAxisBeginAtZero,
                                 fontFamily: chartConfig.fontFamily,
                                 fontSize: chartConfig.fontSize,
                                 fontColor: chartConfig.fontColor
@@ -197,6 +201,18 @@
                     cubicInterpolationMode: 'monotone',
                 },
                 {
+                    // purple    
+                    backgroundColor: 'rgba(107,76,154,0.6)',
+                    borderColor: 'rgba(69,49,99,1.0)',
+                    borderWidth: 1,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 5,
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(235,84,124,1.0)',
+                },
+                {
                     // green
                     backgroundColor: 'rgba(112,193,179,0.6)',
                     borderColor: 'rgba(112,193,179,1.0)',
@@ -236,18 +252,6 @@
                     // earth        
                     backgroundColor: 'rgba(204,194,16,0.6)',
                     borderColor: 'rgba(121,115,9,1.0)',
-                    borderWidth: 1,
-                    pointRadius: 1,
-                    pointHitRadius: 10,
-                    pointHoverRadius: 5,
-                    pointHoverBorderWidth: 5,
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgba(235,84,124,1.0)',
-                },
-                {
-                    // purple    
-                    backgroundColor: 'rgba(107,76,154,0.6)',
-                    borderColor: 'rgba(69,49,99,1.0)',
                     borderWidth: 1,
                     pointRadius: 1,
                     pointHitRadius: 10,
@@ -469,18 +473,6 @@
                         {
                             id: 'y-axis-0',
                             position: 'left',
-                            gridLines: {
-                                color: GlobalChartColors.GRID_COLOR
-                            },
-                            ticks: {
-                                fontFamily: GlobalChartOptions.FONT_FAMILY,
-                                fontSize: GlobalChartOptions.FONT_SIZE,
-                                fontColor: GlobalChartColors.FONT_COLOR,
-                            }
-                        },
-                        {
-                            id: 'y-axis-1',
-                            position: 'right',
                             gridLines: {
                                 color: GlobalChartColors.GRID_COLOR
                             },
@@ -1050,6 +1042,7 @@
          */
             function () {
                 this.combinedChartPlugins.push(pluginDataLabels);
+                this.combinedChartPlugins.push(ChartAnnotation);
             };
         /**
          * @param {?} changes
@@ -1983,6 +1976,7 @@
          * @return {?}
          */
             function () {
+                this.waterfallData = [];
                 this.dataProcessing();
             };
         /**
@@ -1995,6 +1989,7 @@
          */
             function (changes) {
                 if (changes['waterfallChartData']) {
+                    this.waterfallData = [];
                     this.dataProcessing();
                 }
             };

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { PlotlyModule } from 'angular-plotly.js';
 import * as PlotlyJS from 'plotly.js/dist/plotly.js';
+import * as ChartAnnotation from 'chartjs-plugin-annotation';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { BaseChartDirective, ChartsModule } from 'ng2-charts';
 import { selectAll } from 'd3';
@@ -73,6 +74,8 @@ class SimpleChartConfig {
         this.fontColor = 'rgba(0,0,0,0.5)';
         this.gridColor = 'rgba(0,0,0,0.1)';
         this.isHorizontalBar = false;
+        this.xAxisBeginAtZero = false;
+        this.yAxisBeginAtZero = false;
     }
     /**
      * @param {?} chartOptions
@@ -99,9 +102,10 @@ class SimpleChartConfig {
                 color: chartConfig.gridColor
             };
             chartOptions.scales.yAxes[0].ticks = {
+                beginAtZero: chartConfig.yAxisBeginAtZero,
                 fontFamily: chartConfig.fontFamily,
                 fontSize: chartConfig.fontSize,
-                fontColor: chartConfig.fontColor
+                fontColor: chartConfig.fontColor,
             };
         }
         if (chartConfig.yAxisRightLabel.length > 0) {
@@ -114,6 +118,7 @@ class SimpleChartConfig {
                         labelString: chartConfig.yAxisRightLabel
                     },
                     ticks: {
+                        beginAtZero: chartConfig.yAxisBeginAtZero,
                         fontFamily: chartConfig.fontFamily,
                         fontSize: chartConfig.fontSize,
                         fontColor: chartConfig.fontColor
@@ -192,6 +197,18 @@ class GlobalChartColors {
                 cubicInterpolationMode: 'monotone',
             },
             {
+                // purple    
+                backgroundColor: 'rgba(107,76,154,0.6)',
+                borderColor: 'rgba(69,49,99,1.0)',
+                borderWidth: 1,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                pointHoverRadius: 5,
+                pointHoverBorderWidth: 5,
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(235,84,124,1.0)',
+            },
+            {
                 // green
                 backgroundColor: 'rgba(112,193,179,0.6)',
                 borderColor: 'rgba(112,193,179,1.0)',
@@ -231,18 +248,6 @@ class GlobalChartColors {
                 // earth        
                 backgroundColor: 'rgba(204,194,16,0.6)',
                 borderColor: 'rgba(121,115,9,1.0)',
-                borderWidth: 1,
-                pointRadius: 1,
-                pointHitRadius: 10,
-                pointHoverRadius: 5,
-                pointHoverBorderWidth: 5,
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgba(235,84,124,1.0)',
-            },
-            {
-                // purple    
-                backgroundColor: 'rgba(107,76,154,0.6)',
-                borderColor: 'rgba(69,49,99,1.0)',
                 borderWidth: 1,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -464,18 +469,6 @@ class GlobalChartOptions {
                     {
                         id: 'y-axis-0',
                         position: 'left',
-                        gridLines: {
-                            color: GlobalChartColors.GRID_COLOR
-                        },
-                        ticks: {
-                            fontFamily: GlobalChartOptions.FONT_FAMILY,
-                            fontSize: GlobalChartOptions.FONT_SIZE,
-                            fontColor: GlobalChartColors.FONT_COLOR,
-                        }
-                    },
-                    {
-                        id: 'y-axis-1',
-                        position: 'right',
                         gridLines: {
                             color: GlobalChartColors.GRID_COLOR
                         },
@@ -981,6 +974,7 @@ class CombinedMeasureChartComponent {
      */
     ngOnInit() {
         this.combinedChartPlugins.push(pluginDataLabels);
+        this.combinedChartPlugins.push(ChartAnnotation);
     }
     /**
      * @param {?} changes
@@ -1854,6 +1848,7 @@ class WaterfallChartComponent {
      * @return {?}
      */
     ngOnInit() {
+        this.waterfallData = [];
         this.dataProcessing();
     }
     /**
@@ -1862,6 +1857,7 @@ class WaterfallChartComponent {
      */
     ngOnChanges(changes) {
         if (changes['waterfallChartData']) {
+            this.waterfallData = [];
             this.dataProcessing();
         }
     }
