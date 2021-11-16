@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('angular-plotly.js'), require('plotly.js-dist-min'), require('chartjs-plugin-annotation'), require('chartjs-plugin-datalabels'), require('ng2-charts'), require('d3'), require('chartjs-plugin-waterfall'), require('@angular/core'), require('chart.js')) :
-    typeof define === 'function' && define.amd ? define('chart-lib', ['exports', '@angular/common', 'angular-plotly.js', 'plotly.js-dist-min', 'chartjs-plugin-annotation', 'chartjs-plugin-datalabels', 'ng2-charts', 'd3', 'chartjs-plugin-waterfall', '@angular/core', 'chart.js'], factory) :
-    (factory((global['chart-lib'] = {}),global.ng.common,global.angularPlotly_js,global.PlotlyJS,global.ChartAnnotation,global.pluginDataLabels,global.ng2Charts,global.d3$1,global.waterfallPlugin,global.ng.core,global.Chart));
-}(this, (function (exports,common,angularPlotly_js,PlotlyJS,ChartAnnotation,pluginDataLabels,ng2Charts,d3$1,waterfallPlugin,i0,Chart) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('angular-plotly.js'), require('chart.js'), require('chartjs-plugin-annotation'), require('chartjs-plugin-datalabels'), require('ng2-charts'), require('d3'), require('@angular/core'), require('chartjs-plugin-waterfall')) :
+    typeof define === 'function' && define.amd ? define('chart-lib', ['exports', '@angular/common', 'angular-plotly.js', 'chart.js', 'chartjs-plugin-annotation', 'chartjs-plugin-datalabels', 'ng2-charts', 'd3', '@angular/core', 'chartjs-plugin-waterfall'], factory) :
+    (factory((global['chart-lib'] = {}),global.ng.common,global.angularPlotly_js,global.Chart,global.ChartAnnotation,global.pluginDataLabels,global.ng2Charts,global.d3$1,global.ng.core,global.waterfallPlugin));
+}(this, (function (exports,common,angularPlotly_js,Chart,ChartAnnotation,pluginDataLabels,ng2Charts,d3$1,i0,waterfallPlugin) { 'use strict';
 
     /**
      * @fileoverview added by tsickle
@@ -764,6 +764,141 @@
             chart: [{ type: i0.ViewChild, args: [ng2Charts.BaseChartDirective,] }]
         };
         return BarChartComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var BaseChartComponent = /** @class */ (function () {
+        function BaseChartComponent() {
+            this.chartClick = new i0.EventEmitter();
+            this.chartHover = new i0.EventEmitter();
+        }
+        /**
+         * @return {?}
+         */
+        BaseChartComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                if (this.options) {
+                    /** @type {?} */
+                    var opt = Object.assign(Object.create(Object.getPrototypeOf(this.options)), this.options);
+                    opt.onClick = ( /**
+                     * @param {?=} event
+                     * @param {?=} active
+                     * @return {?}
+                     */function (event, active) {
+                        _this.chartClicked(event, active);
+                    });
+                    opt.hover = opt.hover || {};
+                    opt.hover.onHover = ( /**
+                     * @param {?} event
+                     * @param {?} active
+                     * @return {?}
+                     */function (event, active) {
+                        _this.chartHovered(event, active);
+                    });
+                    this._options = opt;
+                }
+                else {
+                    /** @type {?} */
+                    var opt = {};
+                    opt.onClick = ( /**
+                     * @param {?=} event
+                     * @param {?=} active
+                     * @return {?}
+                     */function (event, active) {
+                        _this.chartClicked(event, active);
+                    });
+                    opt.hover = opt.hover || {};
+                    opt.hover.onHover = ( /**
+                     * @param {?} event
+                     * @param {?} active
+                     * @return {?}
+                     */function (event, active) {
+                        _this.chartHovered(event, active);
+                    });
+                    this._options = opt;
+                }
+                this._chart = new Chart(this.canvasRef.nativeElement, {
+                    type: this.type,
+                    data: this.data,
+                    options: this._options,
+                    plugins: this.plugins
+                });
+            };
+        /**
+         * @private
+         * @param {?} event
+         * @param {?} chartObj
+         * @return {?}
+         */
+        BaseChartComponent.prototype.chartClicked = /**
+         * @private
+         * @param {?} event
+         * @param {?} chartObj
+         * @return {?}
+         */
+            function (event, chartObj) {
+                this.chartClick.emit(chartObj);
+            };
+        /**
+         * @private
+         * @param {?} event
+         * @param {?} chartObj
+         * @return {?}
+         */
+        BaseChartComponent.prototype.chartHovered = /**
+         * @private
+         * @param {?} event
+         * @param {?} chartObj
+         * @return {?}
+         */
+            function (event, chartObj) {
+                this.chartHover.emit(chartObj);
+            };
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        BaseChartComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+            };
+        /**
+         * @return {?}
+         */
+        BaseChartComponent.prototype.ngOnDestroy = /**
+         * @return {?}
+         */
+            function () {
+                if (this._chart) {
+                    this._chart.destroy();
+                }
+            };
+        BaseChartComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'lib-base-chart',
+                        template: "<div class=\"chart-container\" style=\"position: relative; width: 100%; height: 100%\">\n  <canvas #chartCanvas></canvas>\n</div>\n"
+                    }] }
+        ];
+        /** @nocollapse */
+        BaseChartComponent.ctorParameters = function () { return []; };
+        BaseChartComponent.propDecorators = {
+            canvasRef: [{ type: i0.ViewChild, args: ['chartCanvas',] }],
+            type: [{ type: i0.Input }],
+            data: [{ type: i0.Input }],
+            options: [{ type: i0.Input }],
+            plugins: [{ type: i0.Input }],
+            chartClick: [{ type: i0.Output }],
+            chartHover: [{ type: i0.Output }]
+        };
+        return BaseChartComponent;
     }());
 
     /**
@@ -2438,142 +2573,11 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
-    var BaseChartComponent = /** @class */ (function () {
-        function BaseChartComponent() {
-            this.chartClick = new i0.EventEmitter();
-            this.chartHover = new i0.EventEmitter();
-        }
-        /**
-         * @return {?}
-         */
-        BaseChartComponent.prototype.ngOnInit = /**
-         * @return {?}
-         */
-            function () {
-                var _this = this;
-                if (this.options) {
-                    /** @type {?} */
-                    var opt = Object.assign(Object.create(Object.getPrototypeOf(this.options)), this.options);
-                    opt.onClick = ( /**
-                     * @param {?=} event
-                     * @param {?=} active
-                     * @return {?}
-                     */function (event, active) {
-                        _this.chartClicked(event, active);
-                    });
-                    opt.hover = opt.hover || {};
-                    opt.hover.onHover = ( /**
-                     * @param {?} event
-                     * @param {?} active
-                     * @return {?}
-                     */function (event, active) {
-                        _this.chartHovered(event, active);
-                    });
-                    this._options = opt;
-                }
-                else {
-                    /** @type {?} */
-                    var opt = {};
-                    opt.onClick = ( /**
-                     * @param {?=} event
-                     * @param {?=} active
-                     * @return {?}
-                     */function (event, active) {
-                        _this.chartClicked(event, active);
-                    });
-                    opt.hover = opt.hover || {};
-                    opt.hover.onHover = ( /**
-                     * @param {?} event
-                     * @param {?} active
-                     * @return {?}
-                     */function (event, active) {
-                        _this.chartHovered(event, active);
-                    });
-                    this._options = opt;
-                }
-                this._chart = new Chart(this.canvasRef.nativeElement, {
-                    type: this.type,
-                    data: this.data,
-                    options: this._options,
-                    plugins: this.plugins
-                });
-            };
-        /**
-         * @private
-         * @param {?} event
-         * @param {?} chartObj
-         * @return {?}
-         */
-        BaseChartComponent.prototype.chartClicked = /**
-         * @private
-         * @param {?} event
-         * @param {?} chartObj
-         * @return {?}
-         */
-            function (event, chartObj) {
-                this.chartClick.emit(chartObj);
-            };
-        /**
-         * @private
-         * @param {?} event
-         * @param {?} chartObj
-         * @return {?}
-         */
-        BaseChartComponent.prototype.chartHovered = /**
-         * @private
-         * @param {?} event
-         * @param {?} chartObj
-         * @return {?}
-         */
-            function (event, chartObj) {
-                this.chartHover.emit(chartObj);
-            };
-        /**
-         * @param {?} changes
-         * @return {?}
-         */
-        BaseChartComponent.prototype.ngOnChanges = /**
-         * @param {?} changes
-         * @return {?}
-         */
-            function (changes) {
-            };
-        /**
-         * @return {?}
-         */
-        BaseChartComponent.prototype.ngOnDestroy = /**
-         * @return {?}
-         */
-            function () {
-                if (this._chart) {
-                    this._chart.destroy();
-                }
-            };
-        BaseChartComponent.decorators = [
-            { type: i0.Component, args: [{
-                        selector: 'lib-base-chart',
-                        template: "<div class=\"chart-container\" style=\"position: relative; width: 100%; height: 100%\">\n  <canvas #chartCanvas></canvas>\n</div>\n"
-                    }] }
-        ];
-        /** @nocollapse */
-        BaseChartComponent.ctorParameters = function () { return []; };
-        BaseChartComponent.propDecorators = {
-            canvasRef: [{ type: i0.ViewChild, args: ['chartCanvas',] }],
-            type: [{ type: i0.Input }],
-            data: [{ type: i0.Input }],
-            options: [{ type: i0.Input }],
-            plugins: [{ type: i0.Input }],
-            chartClick: [{ type: i0.Output }],
-            chartHover: [{ type: i0.Output }]
-        };
-        return BaseChartComponent;
-    }());
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-    angularPlotly_js.PlotlyModule.plotlyjs = PlotlyJS;
+    // PlotlyModule.plotlyjs = PlotlyJS;
+    angularPlotly_js.PlotlyViaCDNModule.plotlyVersion = "1.50.0"; // can be `latest` or any version number (i.e.: '1.40.0')
+    // can be `latest` or any version number (i.e.: '1.40.0')
+    angularPlotly_js.PlotlyViaCDNModule.plotlyBundleNames = ['cartesian', 'finance']; // optional: can be null (for full) or 'basic', 'cartesian', 'geo', 'gl3d', 'gl2d', 'mapbox' or 'finance'
+    // optional: can be null (for full) or 'basic', 'cartesian', 'geo', 'gl3d', 'gl2d', 'mapbox' or 'finance'
     var ChartLibModule = /** @class */ (function () {
         function ChartLibModule() {
         }
@@ -2597,7 +2601,7 @@
                         imports: [
                             common.CommonModule,
                             ng2Charts.ChartsModule,
-                            angularPlotly_js.PlotlyModule
+                            angularPlotly_js.PlotlyViaCDNModule
                         ],
                         exports: [
                             ChartLibComponent,
