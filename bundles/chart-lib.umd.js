@@ -1,6 +1,6 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('angular-plotly.js'), require('plotly.js/dist/plotly.js'), require('chartjs-plugin-annotation'), require('chartjs-plugin-datalabels'), require('ng2-charts'), require('d3'), require('chartjs-plugin-waterfall'), require('@angular/core'), require('chart.js')) :
-    typeof define === 'function' && define.amd ? define('chart-lib', ['exports', '@angular/common', 'angular-plotly.js', 'plotly.js/dist/plotly.js', 'chartjs-plugin-annotation', 'chartjs-plugin-datalabels', 'ng2-charts', 'd3', 'chartjs-plugin-waterfall', '@angular/core', 'chart.js'], factory) :
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('angular-plotly.js'), require('plotly.js-dist-min'), require('chartjs-plugin-annotation'), require('chartjs-plugin-datalabels'), require('ng2-charts'), require('d3'), require('chartjs-plugin-waterfall'), require('@angular/core'), require('chart.js')) :
+    typeof define === 'function' && define.amd ? define('chart-lib', ['exports', '@angular/common', 'angular-plotly.js', 'plotly.js-dist-min', 'chartjs-plugin-annotation', 'chartjs-plugin-datalabels', 'ng2-charts', 'd3', 'chartjs-plugin-waterfall', '@angular/core', 'chart.js'], factory) :
     (factory((global['chart-lib'] = {}),global.ng.common,global.angularPlotly_js,global.PlotlyJS,global.ChartAnnotation,global.pluginDataLabels,global.ng2Charts,global.d3$1,global.waterfallPlugin,global.ng.core,global.Chart));
 }(this, (function (exports,common,angularPlotly_js,PlotlyJS,ChartAnnotation,pluginDataLabels,ng2Charts,d3$1,waterfallPlugin,i0,Chart) { 'use strict';
 
@@ -375,7 +375,9 @@
                     size: GlobalChartOptions.FONT_SIZE,
                     color: GlobalChartColors.FONT_COLOR
                 },
-                autosize: true,
+                autosize: false,
+                width: 1150,
+                height: 800,
                 showlegend: false,
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 plot_bgcolor: 'rgba(0,0,0,0)'
@@ -1425,8 +1427,8 @@
                  * @param {?} color
                  * @return {?}
                  */function (color) {
-                    color['pointRadius'] = 6;
-                    color['pointHoverRadius'] = 6;
+                    color['pointRadius'] = 5;
+                    color['pointHoverRadius'] = 5;
                 }));
             }
             if (!this.scatterChartOptions || Object.keys(this.scatterChartOptions).length == 0) {
@@ -1839,6 +1841,20 @@
          * @return {?}
          */
             function () {
+                if (!this.variableWidthChartOptions || Object.keys(this.variableWidthChartOptions).length == 0) {
+                    this.variableWidthChartOptions = new GlobalChartOptions().variableWidthChartOptions;
+                }
+                this.buildChartData();
+            };
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        VariableWidthChartComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
                 if (!this.variableWidthChartOptions || Object.keys(this.variableWidthChartOptions).length == 0) {
                     this.variableWidthChartOptions = new GlobalChartOptions().variableWidthChartOptions;
                 }
@@ -2596,7 +2612,8 @@
                             VariableWidthChartComponent,
                             WaterfallChartComponent,
                             WaterfallPluginChartComponent,
-                            BaseChartComponent
+                            BaseChartComponent,
+                            ng2Charts.ChartsModule
                         ]
                     },] }
         ];

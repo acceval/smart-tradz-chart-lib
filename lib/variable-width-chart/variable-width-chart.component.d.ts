@@ -1,7 +1,7 @@
-import { OnInit } from '@angular/core';
+import { OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartOptions } from 'chart.js';
-export declare class VariableWidthChartComponent implements OnInit {
+export declare class VariableWidthChartComponent implements OnInit, OnChanges {
     generatedChartData: Array<any>;
     generatedChartColors: Array<any>;
     chart: BaseChartDirective;
@@ -11,6 +11,7 @@ export declare class VariableWidthChartComponent implements OnInit {
     variableWidthChartOptions: ChartOptions;
     constructor();
     ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
     private buildChartData;
     limitLineColor: any;
     private volumeAllocaitonColors;

@@ -1,4 +1,4 @@
-import { OnInit, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { EventEmitter, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 export declare class WaterfallChartComponent implements OnInit, OnChanges {
     waterfallChartData: WaterfallChartData[];
     waterfallExtendedChartData: WaterfallChartData[];

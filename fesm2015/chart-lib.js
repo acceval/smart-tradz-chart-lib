@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { PlotlyModule } from 'angular-plotly.js';
-import * as PlotlyJS from 'plotly.js/dist/plotly.js';
+import * as PlotlyJS from 'plotly.js-dist-min';
 import * as ChartAnnotation from 'chartjs-plugin-annotation';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { BaseChartDirective, ChartsModule } from 'ng2-charts';
 import { selectAll } from 'd3';
 import * as waterfallPlugin from 'chartjs-plugin-waterfall';
-import { Injectable, Component, NgModule, Input, EventEmitter, Output, ViewChild, defineInjectable } from '@angular/core';
+import { Injectable, Component, Input, Output, EventEmitter, ViewChild, NgModule, defineInjectable } from '@angular/core';
 import * as Chart from 'chart.js';
 
 /**
@@ -371,7 +371,9 @@ class GlobalChartOptions {
                 size: GlobalChartOptions.FONT_SIZE,
                 color: GlobalChartColors.FONT_COLOR
             },
-            autosize: true,
+            autosize: false,
+            width: 1150,
+            height: 800,
             showlegend: false,
             paper_bgcolor: 'rgba(0,0,0,0)',
             plot_bgcolor: 'rgba(0,0,0,0)'
@@ -1311,8 +1313,8 @@ class ScatterChartComponent {
              * @return {?}
              */
             color => {
-                color['pointRadius'] = 6;
-                color['pointHoverRadius'] = 6;
+                color['pointRadius'] = 5;
+                color['pointHoverRadius'] = 5;
             }));
         }
         if (!this.scatterChartOptions || Object.keys(this.scatterChartOptions).length == 0) {
@@ -1724,6 +1726,16 @@ class VariableWidthChartComponent {
      * @return {?}
      */
     ngOnInit() {
+        if (!this.variableWidthChartOptions || Object.keys(this.variableWidthChartOptions).length == 0) {
+            this.variableWidthChartOptions = new GlobalChartOptions().variableWidthChartOptions;
+        }
+        this.buildChartData();
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
         if (!this.variableWidthChartOptions || Object.keys(this.variableWidthChartOptions).length == 0) {
             this.variableWidthChartOptions = new GlobalChartOptions().variableWidthChartOptions;
         }
@@ -2413,7 +2425,8 @@ ChartLibModule.decorators = [
                     VariableWidthChartComponent,
                     WaterfallChartComponent,
                     WaterfallPluginChartComponent,
-                    BaseChartComponent
+                    BaseChartComponent,
+                    ChartsModule
                 ]
             },] }
 ];
