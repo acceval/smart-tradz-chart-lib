@@ -1,4 +1,5 @@
 import { EventEmitter, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import * as i0 from "@angular/core";
 export declare class WaterfallPluginChartComponent implements OnInit, OnChanges {
     waterfallPluginChartData: WaterfallPluginChartData[];
     chartData: Chart.ChartData;
@@ -23,6 +24,8 @@ export declare class WaterfallPluginChartComponent implements OnInit, OnChanges 
     };
     chartClicked(event: any): void;
     chartHovered(event: any): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<WaterfallPluginChartComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<WaterfallPluginChartComponent, "lib-waterfall-plugin-chart", never, { "waterfallPluginChartData": "waterfallPluginChartData"; }, { "chartClick": "chartClick"; "chartHover": "chartHover"; }, never, never>;
 }
 export interface WaterfallPluginChartData {
     label: string;

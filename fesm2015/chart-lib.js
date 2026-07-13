@@ -1,58 +1,52 @@
+import * as i0 from '@angular/core';
+import { Injectable, Component, EventEmitter, Input, Output, ViewChild, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import * as i1$1 from 'angular-plotly.js';
 import { PlotlyViaCDNModule } from 'angular-plotly.js';
-import * as Chart from 'chart.js';
-import * as ChartAnnotation from 'chartjs-plugin-annotation';
-import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import * as i1 from 'ng2-charts';
 import { BaseChartDirective, ChartsModule } from 'ng2-charts';
-import { selectAll } from 'd3';
-import { Injectable, Component, Input, Output, EventEmitter, ViewChild, defineInjectable, NgModule } from '@angular/core';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import * as Chart from 'chart.js';
+import * as d3$1 from 'd3';
+import * as ChartAnnotation from 'chartjs-plugin-annotation';
 import * as waterfallPlugin from 'chartjs-plugin-waterfall';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class ChartLibService {
     constructor() { }
 }
-ChartLibService.decorators = [
-    { type: Injectable, args: [{
-                providedIn: 'root'
-            },] }
-];
-/** @nocollapse */
-ChartLibService.ctorParameters = () => [];
-/** @nocollapse */ ChartLibService.ngInjectableDef = defineInjectable({ factory: function ChartLibService_Factory() { return new ChartLibService(); }, token: ChartLibService, providedIn: "root" });
+ChartLibService.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: ChartLibService, deps: [], target: i0.ɵɵFactoryTarget.Injectable });
+ChartLibService.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: ChartLibService, providedIn: 'root' });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: ChartLibService, decorators: [{
+            type: Injectable,
+            args: [{
+                    providedIn: 'root'
+                }]
+        }], ctorParameters: function () { return []; } });
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class ChartLibComponent {
     constructor() { }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
     }
 }
-ChartLibComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'lib-chart-lib',
-                template: `
+ChartLibComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: ChartLibComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+ChartLibComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.1.5", type: ChartLibComponent, selector: "lib-chart-lib", ngImport: i0, template: `
     <p>
       chart-lib works!
     </p>
-  `
-            }] }
-];
-/** @nocollapse */
-ChartLibComponent.ctorParameters = () => [];
+  `, isInline: true });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: ChartLibComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'lib-chart-lib',
+                    template: `
+    <p>
+      chart-lib works!
+    </p>
+  `,
+                    styles: []
+                }]
+        }], ctorParameters: function () { return []; } });
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class SimpleChartConfig {
     constructor() {
         this.isDisplayDataLabel = false;
@@ -76,14 +70,8 @@ class SimpleChartConfig {
         this.xAxisBeginAtZero = false;
         this.yAxisBeginAtZero = false;
     }
-    /**
-     * @param {?} chartOptions
-     * @param {?} chartConfig
-     * @return {?}
-     */
     static populateChartConfig(chartOptions, chartConfig) {
         if (chartConfig.isDisplayDataLabel) {
-            /** @type {?} */
             let dataLabels = {
                 display: true,
                 anchor: chartConfig.dataLabelAnchor,
@@ -137,7 +125,6 @@ class SimpleChartConfig {
             };
         }
         if (chartConfig.isDisplayLegend) {
-            /** @type {?} */
             let positionType = 'top';
             if (chartConfig.legendPosition == 'top') {
                 positionType = 'top';
@@ -175,15 +162,10 @@ class SimpleChartConfig {
     }
 }
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class GlobalChartColors {
     constructor() {
         this.globalColors = [
             {
-                // blue        
                 backgroundColor: 'rgba(36,123,160,0.6)',
                 borderColor: 'rgba(36,123,160,1.0)',
                 borderWidth: 1,
@@ -196,7 +178,6 @@ class GlobalChartColors {
                 cubicInterpolationMode: 'monotone',
             },
             {
-                // purple    
                 backgroundColor: 'rgba(107,76,154,0.6)',
                 borderColor: 'rgba(69,49,99,1.0)',
                 borderWidth: 1,
@@ -208,7 +189,6 @@ class GlobalChartColors {
                 pointHoverBorderColor: 'rgba(235,84,124,1.0)',
             },
             {
-                // green
                 backgroundColor: 'rgba(112,193,179,0.6)',
                 borderColor: 'rgba(112,193,179,1.0)',
                 borderWidth: 1,
@@ -220,7 +200,6 @@ class GlobalChartColors {
                 pointHoverBorderColor: 'rgba(235,84,124,1.0)',
             },
             {
-                // red
                 backgroundColor: 'rgba(235,84,124,0.6)',
                 borderColor: 'rgba(235,84,124,1.0)',
                 borderWidth: 1,
@@ -232,7 +211,6 @@ class GlobalChartColors {
                 pointHoverBorderColor: 'rgba(235,84,124,1.0)',
             },
             {
-                // yellow
                 backgroundColor: 'rgba(229,227,24,0.6)',
                 borderColor: 'rgba(229,227,24,1.0)',
                 borderWidth: 1,
@@ -244,7 +222,6 @@ class GlobalChartColors {
                 pointHoverBorderColor: 'rgba(235,84,124,1.0)',
             },
             {
-                // earth        
                 backgroundColor: 'rgba(204,194,16,0.6)',
                 borderColor: 'rgba(121,115,9,1.0)',
                 borderWidth: 1,
@@ -269,10 +246,6 @@ GlobalChartColors.globalBackgroundColors = [
     'rgba(107,76,154,0.6)',
 ];
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class GlobalChartOptions {
     constructor() {
         this.barChartOptions = {
@@ -340,16 +313,10 @@ class GlobalChartOptions {
             responsive: true,
             plugins: {
                 datalabels: {
-                    formatter: (/**
-                     * @param {?} value
-                     * @param {?} ctx
-                     * @return {?}
-                     */
-                    (value, ctx) => {
-                        /** @type {?} */
+                    formatter: (value, ctx) => {
                         const label = ctx.chart.data.labels[ctx.dataIndex];
                         return label;
-                    }),
+                    },
                 },
             }
         };
@@ -526,13 +493,7 @@ class GlobalChartOptions {
             }
         };
     }
-    /**
-     * @param {?} width
-     * @param {?} height
-     * @return {?}
-     */
     peityPieOptions(width, height) {
-        /** @type {?} */
         let options = {
             delimiter: null,
             fill: GlobalChartColors.globalBackgroundColors,
@@ -542,13 +503,7 @@ class GlobalChartOptions {
         };
         return options;
     }
-    /**
-     * @param {?} width
-     * @param {?} height
-     * @return {?}
-     */
     peityDonutOptions(width, height) {
-        /** @type {?} */
         let options = {
             delimiter: null,
             fill: GlobalChartColors.globalBackgroundColors,
@@ -559,13 +514,7 @@ class GlobalChartOptions {
         };
         return options;
     }
-    /**
-     * @param {?} width
-     * @param {?} height
-     * @return {?}
-     */
     peityLineOptions(width, height) {
-        /** @type {?} */
         let options = {
             delimiter: ",",
             fill: GlobalChartColors.globalBackgroundColors[0],
@@ -578,13 +527,7 @@ class GlobalChartOptions {
         };
         return options;
     }
-    /**
-     * @param {?} width
-     * @param {?} height
-     * @return {?}
-     */
     peityBarOptions(width, height) {
-        /** @type {?} */
         let options = {
             delimiter: ",",
             fill: [GlobalChartColors.globalBackgroundColors[0]],
@@ -600,10 +543,6 @@ class GlobalChartOptions {
 GlobalChartOptions.FONT_FAMILY = 'Helvetica Neue';
 GlobalChartOptions.FONT_SIZE = 12;
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class BarChartComponent {
     constructor() {
         this.barChartOptions = {};
@@ -618,9 +557,6 @@ class BarChartComponent {
         this.labelClick = new EventEmitter();
         this.chartType = 'bar';
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (!this.barChartColors || Object.keys(this.barChartColors).length == 0) {
             this.barChartColors = new GlobalChartColors().globalColors;
@@ -638,151 +574,104 @@ class BarChartComponent {
             }
         }
         this.barChartPlugins.push(pluginDataLabels);
-        /** @type {?} */
         let chartPlugin = {
-            beforeInit: (/**
-             * @param {?} chart
-             * @param {?} options
-             * @return {?}
-             */
-            function (chart, options) {
-                chart.legend.afterFit = (/**
-                 * @return {?}
-                 */
-                function () {
+            beforeInit: function (chart, options) {
+                chart.legend.afterFit = function () {
                     this.height = this.height + 20;
-                });
-            })
+                };
+            }
         };
         this.barChartPlugins.push(chartPlugin);
     }
-    /**
-     * @param {?} __0
-     * @return {?}
-     */
     chartClicked({ event, active }) {
         if (active.length > 0) {
             this.chartClick.emit(active[0]);
         }
-        /** @type {?} */
         var ctx = $('#barChart')[0].getContext("2d");
-        /** @type {?} */
         var barChart = this.chart.chart;
-        /** @type {?} */
         var base = barChart.chartArea.bottom;
-        /** @type {?} */
         var height = barChart.height;
-        /** @type {?} */
         var width = barChart.scales['x-axis-0'].width;
-        /** @type {?} */
         var offset = $('#barChart').offset().top - $(window).scrollTop();
         if (event.pageY > base + offset) {
-            /** @type {?} */
             var count = barChart.scales['x-axis-0'].ticks.length;
-            /** @type {?} */
             var paddingLeft = barChart.scales['x-axis-0'].paddingLeft;
-            /** @type {?} */
             var paddingRight = barChart.scales['x-axis-0'].paddingRight;
-            /** @type {?} */
             var xwidth = (width - paddingLeft - paddingRight) / count;
-            /** @type {?} */
             var barIndex = (event.offsetX - paddingLeft - barChart.scales['y-axis-0'].width) / xwidth;
             if (barIndex > 0 && barIndex < count) {
                 barIndex = Math.floor(barIndex);
-                /** @type {?} */
                 var dataLabel = this.barChartLabels[barIndex];
                 this.labelClick.emit(dataLabel);
             }
         }
     }
-    /**
-     * @param {?} __0
-     * @return {?}
-     */
     chartHovered({ event, active }) {
         if (active.length > 0) {
             this.chartHover.emit(active[0]);
         }
     }
 }
-BarChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'lib-bar-chart',
-                template: "\n    <div style=\"display: block\">\n      <canvas #chart id=\"barChart\" baseChart\n        [datasets]=\"barChartData\"\n        [labels]=\"barChartLabels\"\n        [options]=\"barChartOptions\"\n        [plugins]=\"barChartPlugins\"\n        [colors]=\"barChartColors\" \n        [legend]=\"barChartLegend\"\n        [chartType]=\"chartType\"\n        (chartHover)=\"chartHovered($event)\"\n        (chartClick)=\"chartClicked($event)\">\n      </canvas>\n    </div>\n",
-                styles: [""]
-            }] }
-];
-/** @nocollapse */
-BarChartComponent.ctorParameters = () => [];
-BarChartComponent.propDecorators = {
-    barChartOptions: [{ type: Input }],
-    barChartLabels: [{ type: Input }],
-    barChartLegend: [{ type: Input }],
-    barChartData: [{ type: Input }],
-    barChartPlugins: [{ type: Input }],
-    barChartColors: [{ type: Input }],
-    simpleChartConfig: [{ type: Input }],
-    chartClick: [{ type: Output }],
-    chartHover: [{ type: Output }],
-    labelClick: [{ type: Output }],
-    chart: [{ type: ViewChild, args: [BaseChartDirective,] }]
-};
+BarChartComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: BarChartComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+BarChartComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.1.5", type: BarChartComponent, selector: "lib-bar-chart", inputs: { barChartOptions: "barChartOptions", barChartLabels: "barChartLabels", barChartLegend: "barChartLegend", barChartData: "barChartData", barChartPlugins: "barChartPlugins", barChartColors: "barChartColors", simpleChartConfig: "simpleChartConfig" }, outputs: { chartClick: "chartClick", chartHover: "chartHover", labelClick: "labelClick" }, viewQueries: [{ propertyName: "chart", first: true, predicate: BaseChartDirective, descendants: true }], ngImport: i0, template: "\r\n    <div style=\"display: block\">\r\n      <canvas #chart id=\"barChart\" baseChart\r\n        [datasets]=\"barChartData\"\r\n        [labels]=\"barChartLabels\"\r\n        [options]=\"barChartOptions\"\r\n        [plugins]=\"barChartPlugins\"\r\n        [colors]=\"barChartColors\" \r\n        [legend]=\"barChartLegend\"\r\n        [chartType]=\"chartType\"\r\n        (chartHover)=\"chartHovered($event)\"\r\n        (chartClick)=\"chartClicked($event)\">\r\n      </canvas>\r\n    </div>\r\n", styles: [""], directives: [{ type: i1.BaseChartDirective, selector: "canvas[baseChart]", inputs: ["options", "data", "datasets", "labels", "chartType", "colors", "legend", "plugins"], outputs: ["chartClick", "chartHover"], exportAs: ["base-chart"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: BarChartComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'lib-bar-chart',
+                    templateUrl: './bar-chart.component.html',
+                    styleUrls: ['./bar-chart.component.scss']
+                }]
+        }], ctorParameters: function () { return []; }, propDecorators: { barChartOptions: [{
+                type: Input
+            }], barChartLabels: [{
+                type: Input
+            }], barChartLegend: [{
+                type: Input
+            }], barChartData: [{
+                type: Input
+            }], barChartPlugins: [{
+                type: Input
+            }], barChartColors: [{
+                type: Input
+            }], simpleChartConfig: [{
+                type: Input
+            }], chartClick: [{
+                type: Output
+            }], chartHover: [{
+                type: Output
+            }], labelClick: [{
+                type: Output
+            }], chart: [{
+                type: ViewChild,
+                args: [BaseChartDirective]
+            }] } });
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class BaseChartComponent {
     constructor() {
         this.chartClick = new EventEmitter();
         this.chartHover = new EventEmitter();
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.options) {
-            /** @type {?} */
             const opt = Object.assign(Object.create(Object.getPrototypeOf(this.options)), this.options);
-            opt.onClick = (/**
-             * @param {?=} event
-             * @param {?=} active
-             * @return {?}
-             */
-            (event, active) => {
+            opt.onClick = (event, active) => {
                 this.chartClicked(event, active);
-            });
+            };
             opt.hover = opt.hover || {};
-            opt.hover.onHover = (/**
-             * @param {?} event
-             * @param {?} active
-             * @return {?}
-             */
-            (event, active) => {
+            opt.hover.onHover = (event, active) => {
                 this.chartHovered(event, active);
-            });
+            };
             this._options = opt;
         }
         else {
-            /** @type {?} */
             const opt = {};
-            opt.onClick = (/**
-             * @param {?=} event
-             * @param {?=} active
-             * @return {?}
-             */
-            (event, active) => {
+            opt.onClick = (event, active) => {
                 this.chartClicked(event, active);
-            });
+            };
             opt.hover = opt.hover || {};
-            opt.hover.onHover = (/**
-             * @param {?} event
-             * @param {?} active
-             * @return {?}
-             */
-            (event, active) => {
+            opt.hover.onHover = (event, active) => {
                 this.chartHovered(event, active);
-            });
+            };
             this._options = opt;
         }
         this._chart = new Chart(this.canvasRef.nativeElement, {
@@ -792,61 +681,45 @@ class BaseChartComponent {
             plugins: this.plugins
         });
     }
-    /**
-     * @private
-     * @param {?} event
-     * @param {?} chartObj
-     * @return {?}
-     */
     chartClicked(event, chartObj) {
         this.chartClick.emit(chartObj);
     }
-    /**
-     * @private
-     * @param {?} event
-     * @param {?} chartObj
-     * @return {?}
-     */
     chartHovered(event, chartObj) {
         this.chartHover.emit(chartObj);
     }
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
     }
-    /**
-     * @return {?}
-     */
     ngOnDestroy() {
         if (this._chart) {
             this._chart.destroy();
         }
     }
 }
-BaseChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'lib-base-chart',
-                template: "<div class=\"chart-container\" style=\"position: relative; width: 100%; height: 100%\">\n  <canvas #chartCanvas></canvas>\n</div>\n"
-            }] }
-];
-/** @nocollapse */
-BaseChartComponent.ctorParameters = () => [];
-BaseChartComponent.propDecorators = {
-    canvasRef: [{ type: ViewChild, args: ['chartCanvas',] }],
-    type: [{ type: Input }],
-    data: [{ type: Input }],
-    options: [{ type: Input }],
-    plugins: [{ type: Input }],
-    chartClick: [{ type: Output }],
-    chartHover: [{ type: Output }]
-};
+BaseChartComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: BaseChartComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+BaseChartComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.1.5", type: BaseChartComponent, selector: "lib-base-chart", inputs: { type: "type", data: "data", options: "options", plugins: "plugins" }, outputs: { chartClick: "chartClick", chartHover: "chartHover" }, viewQueries: [{ propertyName: "canvasRef", first: true, predicate: ["chartCanvas"], descendants: true }], usesOnChanges: true, ngImport: i0, template: "<div class=\"chart-container\" style=\"position: relative; width: 100%; height: 100%\">\r\n  <canvas #chartCanvas></canvas>\r\n</div>\r\n" });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: BaseChartComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'lib-base-chart',
+                    templateUrl: './base-chart.component.html'
+                }]
+        }], ctorParameters: function () { return []; }, propDecorators: { canvasRef: [{
+                type: ViewChild,
+                args: ['chartCanvas']
+            }], type: [{
+                type: Input
+            }], data: [{
+                type: Input
+            }], options: [{
+                type: Input
+            }], plugins: [{
+                type: Input
+            }], chartClick: [{
+                type: Output
+            }], chartHover: [{
+                type: Output
+            }] } });
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class BoxPlotChartComponent {
     constructor() {
         this.boxPlotChartOptions = {};
@@ -860,19 +733,11 @@ class BoxPlotChartComponent {
             modeBarButtonsToRemove: ['pan2d', 'lasso2d']
         };
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (!this.boxPlotChartOptions || Object.keys(this.boxPlotChartOptions).length == 0) {
             this.boxPlotChartOptions = new GlobalChartOptions().boxPlotChartOptions;
         }
-        this.boxPlotChartData.forEach((/**
-         * @param {?} chartData
-         * @return {?}
-         */
-        chartData => {
-            /** @type {?} */
+        this.boxPlotChartData.forEach(chartData => {
             let data = {
                 y: chartData.yValues,
                 name: chartData.name,
@@ -881,56 +746,43 @@ class BoxPlotChartComponent {
                 marker: { color: chartData.markerColor }
             };
             this.boxPlotData.push(data);
-        }));
+        });
     }
-    /**
-     * @param {?} event
-     * @return {?}
-     */
     chartClicked(event) {
         if (!(event instanceof MouseEvent)) {
             this.chartClick.emit(event);
         }
     }
-    /**
-     * @param {?} event
-     * @return {?}
-     */
     chartHovered(event) {
         this.chartHover.emit(event);
     }
-    /**
-     * @param {?} event
-     * @return {?}
-     */
     chartAfterPlotted(event) {
-        /** @type {?} */
         let _this = this;
-        selectAll(".xaxislayer-above").selectAll('text').on("click", (/**
-         * @param {?} d
-         * @return {?}
-         */
-        function (d) {
+        d3$1.selectAll(".xaxislayer-above").selectAll('text').on("click", function (d) {
             _this.labelClick.emit(d.text);
-        }));
+        });
     }
 }
-BoxPlotChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'lib-box-plot-chart',
-                template: "<div>\n  <plotly-plot [data]=\"boxPlotData\" [layout]=\"boxPlotChartOptions\" [config]=\"boxPlotChartConfig\" \n    [revision]=\"0\" [debug]=\"true\" [useResizeHandler]=\"true\"\n    (click)=\"chartClicked($event)\" (hover)=\"chartHovered($event)\" (afterPlot)=\"chartAfterPlotted($event)\">\n  </plotly-plot>\n</div>\n",
-                styles: [""]
-            }] }
-];
-/** @nocollapse */
-BoxPlotChartComponent.ctorParameters = () => [];
-BoxPlotChartComponent.propDecorators = {
-    boxPlotChartOptions: [{ type: Input }],
-    boxPlotChartData: [{ type: Input }],
-    chartClick: [{ type: Output }],
-    chartHover: [{ type: Output }],
-    labelClick: [{ type: Output }]
-};
+BoxPlotChartComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: BoxPlotChartComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+BoxPlotChartComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.1.5", type: BoxPlotChartComponent, selector: "lib-box-plot-chart", inputs: { boxPlotChartOptions: "boxPlotChartOptions", boxPlotChartData: "boxPlotChartData" }, outputs: { chartClick: "chartClick", chartHover: "chartHover", labelClick: "labelClick" }, ngImport: i0, template: "<div>\r\n  <plotly-plot [data]=\"boxPlotData\" [layout]=\"boxPlotChartOptions\" [config]=\"boxPlotChartConfig\" \r\n    [revision]=\"0\" [debug]=\"true\" [useResizeHandler]=\"true\"\r\n    (click)=\"chartClicked($event)\" (hover)=\"chartHovered($event)\" (afterPlot)=\"chartAfterPlotted($event)\">\r\n  </plotly-plot>\r\n</div>\r\n", styles: [""], components: [{ type: i1$1.PlotComponent, selector: "plotly-plot", inputs: ["revision", "debug", "useResizeHandler", "data", "layout", "config", "frames", "style", "divId", "className"], outputs: ["initialized", "update", "purge", "error", "afterExport", "afterPlot", "animated", "animatingFrame", "animationInterrupted", "autoSize", "beforeExport", "buttonClicked", "click", "clickAnnotation", "deselect", "doubleClick", "framework", "hover", "legendClick", "legendDoubleClick", "relayout", "restyle", "redraw", "selected", "selecting", "sliderChange", "sliderEnd", "sliderStart", "transitioning", "transitionInterrupted", "unhover"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: BoxPlotChartComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'lib-box-plot-chart',
+                    templateUrl: './box-plot-chart.component.html',
+                    styleUrls: ['./box-plot-chart.component.scss']
+                }]
+        }], ctorParameters: function () { return []; }, propDecorators: { boxPlotChartOptions: [{
+                type: Input
+            }], boxPlotChartData: [{
+                type: Input
+            }], chartClick: [{
+                type: Output
+            }], chartHover: [{
+                type: Output
+            }], labelClick: [{
+                type: Output
+            }] } });
 class BoxPlotChartData {
     constructor() {
         this.markerColor = GlobalChartColors.globalBackgroundColors[0];
@@ -938,10 +790,6 @@ class BoxPlotChartData {
     }
 }
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class CombinedCategoryChartComponent {
     constructor() {
         this.combinedChartOptions = {};
@@ -955,9 +803,6 @@ class CombinedCategoryChartComponent {
         this.chartHover = new EventEmitter();
         this.labelClick = new EventEmitter();
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (!this.combinedChartColors || Object.keys(this.combinedChartColors).length == 0) {
             this.combinedChartColors = new GlobalChartColors().globalColors;
@@ -969,100 +814,78 @@ class CombinedCategoryChartComponent {
             }
         }
         this.combinedChartPlugins.push(pluginDataLabels);
-        /** @type {?} */
         let chartPlugin = {
-            beforeInit: (/**
-             * @param {?} chart
-             * @param {?} options
-             * @return {?}
-             */
-            function (chart, options) {
-                chart.legend.afterFit = (/**
-                 * @return {?}
-                 */
-                function () {
+            beforeInit: function (chart, options) {
+                chart.legend.afterFit = function () {
                     this.height = this.height + 20;
-                });
-            })
+                };
+            }
         };
         this.combinedChartPlugins.push(chartPlugin);
     }
-    /**
-     * @param {?} __0
-     * @return {?}
-     */
     chartClicked({ event, active }) {
         if (active.length > 0) {
             this.chartClick.emit(active[0]);
         }
-        /** @type {?} */
         var ctx = $('#combinedChart')[0].getContext("2d");
-        /** @type {?} */
         var combinedChart = this.chart.chart;
-        /** @type {?} */
         var base = combinedChart.chartArea.bottom;
-        /** @type {?} */
         var height = combinedChart.height;
-        /** @type {?} */
         var width = combinedChart.scales['x-axis-0'].width;
-        /** @type {?} */
         var offset = $('#combinedChart').offset().top - $(window).scrollTop();
         if (event.pageY > base + offset) {
-            /** @type {?} */
             var count = combinedChart.scales['x-axis-0'].ticks.length;
-            /** @type {?} */
             var paddingLeft = combinedChart.scales['x-axis-0'].paddingLeft;
-            /** @type {?} */
             var paddingRight = combinedChart.scales['x-axis-0'].paddingRight;
-            /** @type {?} */
             var xwidth = (width - paddingLeft - paddingRight) / count;
-            /** @type {?} */
             var barIndex = (event.offsetX - paddingLeft - combinedChart.scales['y-axis-0'].width) / xwidth;
             if (barIndex > 0 && barIndex < count) {
                 barIndex = Math.floor(barIndex);
-                /** @type {?} */
                 var dataLabel = this.combinedChartLabels[barIndex];
                 this.labelClick.emit(dataLabel);
             }
         }
     }
-    /**
-     * @param {?} __0
-     * @return {?}
-     */
     chartHovered({ event, active }) {
         if (active.length > 0) {
             this.chartHover.emit(active[0]);
         }
     }
 }
-CombinedCategoryChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'lib-combined-category-chart',
-                template: "\n    <div style=\"display: block\">\n        <canvas #chart id=\"combinedChart\" baseChart\n          [datasets]=\"combinedChartData\"\n          [labels]=\"combinedChartLabels\"\n          [options]=\"combinedChartOptions\"\n          [plugins]=\"combinedChartPlugins\"\n          [colors]=\"combinedChartColors\" \n          [legend]=\"combinedChartLegend\"\n          [chartType]=\"'bar'\"\n          (chartHover)=\"chartHovered($event)\"\n          (chartClick)=\"chartClicked($event)\">\n        </canvas>\n      </div>\n  ",
-                styles: [""]
-            }] }
-];
-/** @nocollapse */
-CombinedCategoryChartComponent.ctorParameters = () => [];
-CombinedCategoryChartComponent.propDecorators = {
-    combinedChartOptions: [{ type: Input }],
-    combinedChartLabels: [{ type: Input }],
-    combinedChartLegend: [{ type: Input }],
-    combinedChartData: [{ type: Input }],
-    combinedChartPlugins: [{ type: Input }],
-    combinedChartColors: [{ type: Input }],
-    simpleChartConfig: [{ type: Input }],
-    chartClick: [{ type: Output }],
-    chartHover: [{ type: Output }],
-    labelClick: [{ type: Output }],
-    chart: [{ type: ViewChild, args: [BaseChartDirective,] }]
-};
+CombinedCategoryChartComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: CombinedCategoryChartComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+CombinedCategoryChartComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.1.5", type: CombinedCategoryChartComponent, selector: "lib-combined-category-chart", inputs: { combinedChartOptions: "combinedChartOptions", combinedChartLabels: "combinedChartLabels", combinedChartLegend: "combinedChartLegend", combinedChartData: "combinedChartData", combinedChartPlugins: "combinedChartPlugins", combinedChartColors: "combinedChartColors", simpleChartConfig: "simpleChartConfig" }, outputs: { chartClick: "chartClick", chartHover: "chartHover", labelClick: "labelClick" }, viewQueries: [{ propertyName: "chart", first: true, predicate: BaseChartDirective, descendants: true }], ngImport: i0, template: "\r\n    <div style=\"display: block\">\r\n        <canvas #chart id=\"combinedChart\" baseChart\r\n          [datasets]=\"combinedChartData\"\r\n          [labels]=\"combinedChartLabels\"\r\n          [options]=\"combinedChartOptions\"\r\n          [plugins]=\"combinedChartPlugins\"\r\n          [colors]=\"combinedChartColors\" \r\n          [legend]=\"combinedChartLegend\"\r\n          [chartType]=\"'bar'\"\r\n          (chartHover)=\"chartHovered($event)\"\r\n          (chartClick)=\"chartClicked($event)\">\r\n        </canvas>\r\n      </div>\r\n  ", styles: [""], directives: [{ type: i1.BaseChartDirective, selector: "canvas[baseChart]", inputs: ["options", "data", "datasets", "labels", "chartType", "colors", "legend", "plugins"], outputs: ["chartClick", "chartHover"], exportAs: ["base-chart"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: CombinedCategoryChartComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'lib-combined-category-chart',
+                    templateUrl: './combined-category-chart.component.html',
+                    styleUrls: ['./combined-category-chart.component.scss']
+                }]
+        }], ctorParameters: function () { return []; }, propDecorators: { combinedChartOptions: [{
+                type: Input
+            }], combinedChartLabels: [{
+                type: Input
+            }], combinedChartLegend: [{
+                type: Input
+            }], combinedChartData: [{
+                type: Input
+            }], combinedChartPlugins: [{
+                type: Input
+            }], combinedChartColors: [{
+                type: Input
+            }], simpleChartConfig: [{
+                type: Input
+            }], chartClick: [{
+                type: Output
+            }], chartHover: [{
+                type: Output
+            }], labelClick: [{
+                type: Output
+            }], chart: [{
+                type: ViewChild,
+                args: [BaseChartDirective]
+            }] } });
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class CombinedMeasureChartComponent {
     constructor() {
         this.combinedChartOptions = {};
@@ -1085,17 +908,10 @@ class CombinedMeasureChartComponent {
             }
         }
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         this.combinedChartPlugins.push(pluginDataLabels);
         this.combinedChartPlugins.push(ChartAnnotation);
     }
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (changes['combinedChartData']) {
             if (this.combinedChartData == null) {
@@ -1104,82 +920,69 @@ class CombinedMeasureChartComponent {
             this.chart.update();
         }
     }
-    /**
-     * @param {?} __0
-     * @return {?}
-     */
     chartClicked({ event, active }) {
         if (active.length > 0) {
             this.chartClick.emit(active[0]);
         }
-        /** @type {?} */
         var ctx = $('#combinedChart')[0].getContext("2d");
-        /** @type {?} */
         var combinedChart = this.chart.chart;
-        /** @type {?} */
         var base = combinedChart.chartArea.bottom;
-        /** @type {?} */
         var height = combinedChart.height;
-        /** @type {?} */
         var width = combinedChart.scales['x-axis-0'].width;
-        /** @type {?} */
         var offset = $('#combinedChart').offset().top - $(window).scrollTop();
         if (event.pageY > base + offset) {
-            /** @type {?} */
             var count = combinedChart.scales['x-axis-0'].ticks.length;
-            /** @type {?} */
             var paddingLeft = combinedChart.scales['x-axis-0'].paddingLeft;
-            /** @type {?} */
             var paddingRight = combinedChart.scales['x-axis-0'].paddingRight;
-            /** @type {?} */
             var xwidth = (width - paddingLeft - paddingRight) / count;
-            /** @type {?} */
             var barIndex = (event.offsetX - paddingLeft - combinedChart.scales['y-axis-0'].width) / xwidth;
             if (barIndex > 0 && barIndex < count) {
                 barIndex = Math.floor(barIndex);
-                /** @type {?} */
                 var dataLabel = this.combinedChartLabels[barIndex];
                 this.labelClick.emit(dataLabel);
             }
         }
     }
-    /**
-     * @param {?} __0
-     * @return {?}
-     */
     chartHovered({ event, active }) {
         if (active.length > 0) {
             this.chartHover.emit(active[0]);
         }
     }
 }
-CombinedMeasureChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'lib-combined-measure-chart',
-                template: "\n    <div style=\"display: block\">\n        <canvas #chart id=\"combinedChart\" baseChart\n          [datasets]=\"combinedChartData\"\n          [labels]=\"combinedChartLabels\"\n          [options]=\"combinedChartOptions\"\n          [plugins]=\"combinedChartPlugins\"\n          [colors]=\"combinedChartColors\" \n          [legend]=\"combinedChartLegend\"\n          [chartType]=\"'bubble'\"\n          [plugins]=\"combinedChartPlugins\"\n          (chartHover)=\"chartHovered($event)\"\n          (chartClick)=\"chartClicked($event)\">\n        </canvas>\n      </div>\n  ",
-                styles: [""]
-            }] }
-];
-/** @nocollapse */
-CombinedMeasureChartComponent.ctorParameters = () => [];
-CombinedMeasureChartComponent.propDecorators = {
-    combinedChartOptions: [{ type: Input }],
-    combinedChartLabels: [{ type: Input }],
-    combinedChartLegend: [{ type: Input }],
-    combinedChartData: [{ type: Input }],
-    combinedChartPlugins: [{ type: Input }],
-    combinedChartColors: [{ type: Input }],
-    simpleChartConfig: [{ type: Input }],
-    chartClick: [{ type: Output }],
-    chartHover: [{ type: Output }],
-    labelClick: [{ type: Output }],
-    chart: [{ type: ViewChild, args: [BaseChartDirective,] }]
-};
+CombinedMeasureChartComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: CombinedMeasureChartComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+CombinedMeasureChartComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.1.5", type: CombinedMeasureChartComponent, selector: "lib-combined-measure-chart", inputs: { combinedChartOptions: "combinedChartOptions", combinedChartLabels: "combinedChartLabels", combinedChartLegend: "combinedChartLegend", combinedChartData: "combinedChartData", combinedChartPlugins: "combinedChartPlugins", combinedChartColors: "combinedChartColors", simpleChartConfig: "simpleChartConfig" }, outputs: { chartClick: "chartClick", chartHover: "chartHover", labelClick: "labelClick" }, viewQueries: [{ propertyName: "chart", first: true, predicate: BaseChartDirective, descendants: true }], usesOnChanges: true, ngImport: i0, template: "\r\n    <div style=\"display: block\">\r\n        <canvas #chart id=\"combinedChart\" baseChart\r\n          [datasets]=\"combinedChartData\"\r\n          [labels]=\"combinedChartLabels\"\r\n          [options]=\"combinedChartOptions\"\r\n          [plugins]=\"combinedChartPlugins\"\r\n          [colors]=\"combinedChartColors\" \r\n          [legend]=\"combinedChartLegend\"\r\n          [chartType]=\"'bubble'\"\r\n          [plugins]=\"combinedChartPlugins\"\r\n          (chartHover)=\"chartHovered($event)\"\r\n          (chartClick)=\"chartClicked($event)\">\r\n        </canvas>\r\n      </div>\r\n  ", styles: [""], directives: [{ type: i1.BaseChartDirective, selector: "canvas[baseChart]", inputs: ["options", "data", "datasets", "labels", "chartType", "colors", "legend", "plugins"], outputs: ["chartClick", "chartHover"], exportAs: ["base-chart"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: CombinedMeasureChartComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'lib-combined-measure-chart',
+                    templateUrl: './combined-measure-chart.component.html',
+                    styleUrls: ['./combined-measure-chart.component.scss']
+                }]
+        }], ctorParameters: function () { return []; }, propDecorators: { combinedChartOptions: [{
+                type: Input
+            }], combinedChartLabels: [{
+                type: Input
+            }], combinedChartLegend: [{
+                type: Input
+            }], combinedChartData: [{
+                type: Input
+            }], combinedChartPlugins: [{
+                type: Input
+            }], combinedChartColors: [{
+                type: Input
+            }], simpleChartConfig: [{
+                type: Input
+            }], chartClick: [{
+                type: Output
+            }], chartHover: [{
+                type: Output
+            }], labelClick: [{
+                type: Output
+            }], chart: [{
+                type: ViewChild,
+                args: [BaseChartDirective]
+            }] } });
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class LineChartComponent {
     constructor() {
         this.lineChartOptions = {};
@@ -1192,17 +995,13 @@ class LineChartComponent {
         this.labelClick = new EventEmitter();
         if (!this.lineChartColors || Object.keys(this.lineChartColors).length == 0) {
             this.lineChartColors = new GlobalChartColors().globalColors;
-            this.lineChartColors.forEach((/**
-             * @param {?} color
-             * @return {?}
-             */
-            color => {
+            this.lineChartColors.forEach(color => {
                 color['fill'] = false;
                 color['cubicInterpolationMode'] = 'monotone';
                 color['lineTension'] = 1;
                 color['pointRadius'] = 3;
                 color['pointHoverRadius'] = 3;
-            }));
+            });
         }
         if (!this.lineChartOptions || Object.keys(this.lineChartOptions).length == 0) {
             this.lineChartOptions = new GlobalChartOptions().lineChartOptions;
@@ -1211,33 +1010,17 @@ class LineChartComponent {
             }
         }
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         this.lineChartPlugins.push(pluginDataLabels);
-        /** @type {?} */
         let chartPlugin = {
-            beforeInit: (/**
-             * @param {?} chart
-             * @param {?} options
-             * @return {?}
-             */
-            function (chart, options) {
-                chart.legend.afterFit = (/**
-                 * @return {?}
-                 */
-                function () {
+            beforeInit: function (chart, options) {
+                chart.legend.afterFit = function () {
                     this.height = this.height + 20;
-                });
-            })
+                };
+            }
         };
         this.lineChartPlugins.push(chartPlugin);
     }
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (changes['lineChartData']) {
             if (this.lineChartData == null) {
@@ -1246,88 +1029,72 @@ class LineChartComponent {
             this.chart.update();
         }
     }
-    /**
-     * @return {?}
-     */
     update() {
         this.chart.update();
     }
-    /**
-     * @param {?} __0
-     * @return {?}
-     */
     chartClicked({ event, active }) {
         if (active.length > 0) {
             this.chartClick.emit(active[0]);
         }
-        /** @type {?} */
         var ctx = $('#lineChart')[0].getContext("2d");
-        /** @type {?} */
         var lineChart = this.chart.chart;
-        /** @type {?} */
         var base = lineChart.chartArea.bottom;
-        /** @type {?} */
         var height = lineChart.height;
-        /** @type {?} */
         var width = lineChart.scales['x-axis-0'].width;
-        /** @type {?} */
         var offset = $('#lineChart').offset().top - $(window).scrollTop();
         if (event.pageY > base + offset) {
-            /** @type {?} */
             var count = lineChart.scales['x-axis-0'].ticks.length;
-            /** @type {?} */
             var paddingLeft = lineChart.scales['x-axis-0'].paddingLeft;
-            /** @type {?} */
             var paddingRight = lineChart.scales['x-axis-0'].paddingRight;
-            /** @type {?} */
             var xwidth = (width - paddingLeft - paddingRight) / count;
-            /** @type {?} */
             var barIndex = (event.offsetX - paddingLeft - lineChart.scales['y-axis-0'].width) / xwidth;
             if (barIndex > 0 && barIndex < count) {
                 barIndex = Math.floor(barIndex);
-                /** @type {?} */
                 var dataLabel = this.lineChartLabels[barIndex];
                 this.labelClick.emit(dataLabel);
             }
         }
     }
-    /**
-     * @param {?} __0
-     * @return {?}
-     */
     chartHovered({ event, active }) {
         if (active.length > 0) {
             this.chartHover.emit(active[0]);
         }
     }
 }
-LineChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'lib-line-chart',
-                template: "<div style=\"display: block;\">\n  <canvas #chart id=\"lineChart\" baseChart \n      [datasets]=\"lineChartData\"\n      [labels]=\"lineChartLabels\"\n      [options]=\"lineChartOptions\"\n      [colors]=\"lineChartColors\"      \n      [legend]=\"lineChartLegend\"\n      [chartType]=\"'line'\"\n      [plugins]=\"lineChartPlugins\"\n      (chartHover)=\"chartHovered($event)\"\n      (chartClick)=\"chartClicked($event)\">\n  </canvas>  \n</div>",
-                styles: [""]
-            }] }
-];
-/** @nocollapse */
-LineChartComponent.ctorParameters = () => [];
-LineChartComponent.propDecorators = {
-    lineChartOptions: [{ type: Input }],
-    lineChartLabels: [{ type: Input }],
-    lineChartLegend: [{ type: Input }],
-    lineChartData: [{ type: Input }],
-    lineChartColors: [{ type: Input }],
-    lineChartPlugins: [{ type: Input }],
-    simpleChartConfig: [{ type: Input }],
-    chartClick: [{ type: Output }],
-    chartHover: [{ type: Output }],
-    labelClick: [{ type: Output }],
-    chart: [{ type: ViewChild, args: [BaseChartDirective,] }]
-};
+LineChartComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: LineChartComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+LineChartComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.1.5", type: LineChartComponent, selector: "lib-line-chart", inputs: { lineChartOptions: "lineChartOptions", lineChartLabels: "lineChartLabels", lineChartLegend: "lineChartLegend", lineChartData: "lineChartData", lineChartColors: "lineChartColors", lineChartPlugins: "lineChartPlugins", simpleChartConfig: "simpleChartConfig" }, outputs: { chartClick: "chartClick", chartHover: "chartHover", labelClick: "labelClick" }, viewQueries: [{ propertyName: "chart", first: true, predicate: BaseChartDirective, descendants: true }], usesOnChanges: true, ngImport: i0, template: "<div style=\"display: block;\">\r\n  <canvas #chart id=\"lineChart\" baseChart \r\n      [datasets]=\"lineChartData\"\r\n      [labels]=\"lineChartLabels\"\r\n      [options]=\"lineChartOptions\"\r\n      [colors]=\"lineChartColors\"      \r\n      [legend]=\"lineChartLegend\"\r\n      [chartType]=\"'line'\"\r\n      [plugins]=\"lineChartPlugins\"\r\n      (chartHover)=\"chartHovered($event)\"\r\n      (chartClick)=\"chartClicked($event)\">\r\n  </canvas>  \r\n</div>", styles: [""], directives: [{ type: i1.BaseChartDirective, selector: "canvas[baseChart]", inputs: ["options", "data", "datasets", "labels", "chartType", "colors", "legend", "plugins"], outputs: ["chartClick", "chartHover"], exportAs: ["base-chart"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: LineChartComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'lib-line-chart',
+                    templateUrl: './line-chart.component.html',
+                    styleUrls: ['./line-chart.component.scss']
+                }]
+        }], ctorParameters: function () { return []; }, propDecorators: { lineChartOptions: [{
+                type: Input
+            }], lineChartLabels: [{
+                type: Input
+            }], lineChartLegend: [{
+                type: Input
+            }], lineChartData: [{
+                type: Input
+            }], lineChartColors: [{
+                type: Input
+            }], lineChartPlugins: [{
+                type: Input
+            }], simpleChartConfig: [{
+                type: Input
+            }], chartClick: [{
+                type: Output
+            }], chartHover: [{
+                type: Output
+            }], labelClick: [{
+                type: Output
+            }], chart: [{
+                type: ViewChild,
+                args: [BaseChartDirective]
+            }] } });
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class PieChartComponent {
     constructor() {
         this.pieChartOptions = {};
@@ -1343,15 +1110,10 @@ class PieChartComponent {
             this.pieChartColors = [{
                     backgroundColor: [],
                 }];
-            /** @type {?} */
             let globalColors = new GlobalChartColors().globalColors;
-            globalColors.forEach((/**
-             * @param {?} color
-             * @return {?}
-             */
-            color => {
+            globalColors.forEach(color => {
                 this.pieChartColors[0].backgroundColor.push(color.backgroundColor);
-            }));
+            });
         }
         if (!this.pieChartOptions || Object.keys(this.pieChartOptions).length == 0) {
             this.pieChartOptions = new GlobalChartOptions().pieChartOptions;
@@ -1360,59 +1122,52 @@ class PieChartComponent {
             }
         }
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (!this.pieChartPlugins) {
             this.pieChartPlugins = [];
         }
         this.pieChartPlugins.push(pluginDataLabels);
     }
-    /**
-     * @param {?} __0
-     * @return {?}
-     */
     chartClicked({ event, active }) {
         if (active.length > 0) {
             this.chartClick.emit(active[0]);
         }
     }
-    /**
-     * @param {?} __0
-     * @return {?}
-     */
     chartHovered({ event, active }) {
         if (active.length > 0) {
             this.chartHover.emit(active[0]);
         }
     }
 }
-PieChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'lib-pie-chart',
-                template: "<div style=\"display: block;\">\n  <canvas baseChart\n    [data]=\"pieChartData\"\n    [labels]=\"pieChartLabels\"    \n    [options]=\"pieChartOptions\"\n    [plugins]=\"pieChartPlugins\"    \n    [colors]=\"pieChartColors\" \n    [legend]=\"pieChartLegend\"\n    [chartType]=\"'pie'\"    \n    (chartHover)=\"chartHovered($event)\"\n    (chartClick)=\"chartClicked($event)\">\n  </canvas>\n</div>\n",
-                styles: [""]
-            }] }
-];
-/** @nocollapse */
-PieChartComponent.ctorParameters = () => [];
-PieChartComponent.propDecorators = {
-    pieChartOptions: [{ type: Input }],
-    pieChartLabels: [{ type: Input }],
-    pieChartData: [{ type: Input }],
-    pieChartLegend: [{ type: Input }],
-    pieChartPlugins: [{ type: Input }],
-    pieChartColors: [{ type: Input }],
-    simpleChartConfig: [{ type: Input }],
-    chartClick: [{ type: Output }],
-    chartHover: [{ type: Output }]
-};
+PieChartComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: PieChartComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+PieChartComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.1.5", type: PieChartComponent, selector: "lib-pie-chart", inputs: { pieChartOptions: "pieChartOptions", pieChartLabels: "pieChartLabels", pieChartData: "pieChartData", pieChartLegend: "pieChartLegend", pieChartPlugins: "pieChartPlugins", pieChartColors: "pieChartColors", simpleChartConfig: "simpleChartConfig" }, outputs: { chartClick: "chartClick", chartHover: "chartHover" }, ngImport: i0, template: "<div style=\"display: block;\">\r\n  <canvas baseChart\r\n    [data]=\"pieChartData\"\r\n    [labels]=\"pieChartLabels\"    \r\n    [options]=\"pieChartOptions\"\r\n    [plugins]=\"pieChartPlugins\"    \r\n    [colors]=\"pieChartColors\" \r\n    [legend]=\"pieChartLegend\"\r\n    [chartType]=\"'pie'\"    \r\n    (chartHover)=\"chartHovered($event)\"\r\n    (chartClick)=\"chartClicked($event)\">\r\n  </canvas>\r\n</div>\r\n", styles: [""], directives: [{ type: i1.BaseChartDirective, selector: "canvas[baseChart]", inputs: ["options", "data", "datasets", "labels", "chartType", "colors", "legend", "plugins"], outputs: ["chartClick", "chartHover"], exportAs: ["base-chart"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: PieChartComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'lib-pie-chart',
+                    templateUrl: './pie-chart.component.html',
+                    styleUrls: ['./pie-chart.component.scss']
+                }]
+        }], ctorParameters: function () { return []; }, propDecorators: { pieChartOptions: [{
+                type: Input
+            }], pieChartLabels: [{
+                type: Input
+            }], pieChartData: [{
+                type: Input
+            }], pieChartLegend: [{
+                type: Input
+            }], pieChartPlugins: [{
+                type: Input
+            }], pieChartColors: [{
+                type: Input
+            }], simpleChartConfig: [{
+                type: Input
+            }], chartClick: [{
+                type: Output
+            }], chartHover: [{
+                type: Output
+            }] } });
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class ScatterChartComponent {
     constructor() {
         this.scatterChartOptions = {};
@@ -1422,14 +1177,10 @@ class ScatterChartComponent {
         this.chartHover = new EventEmitter();
         if (!this.scatterChartColors || Object.keys(this.scatterChartColors).length == 0) {
             this.scatterChartColors = new GlobalChartColors().globalColors;
-            this.scatterChartColors.forEach((/**
-             * @param {?} color
-             * @return {?}
-             */
-            color => {
+            this.scatterChartColors.forEach(color => {
                 color['pointRadius'] = 5;
                 color['pointHoverRadius'] = 5;
-            }));
+            });
         }
         if (!this.scatterChartOptions || Object.keys(this.scatterChartOptions).length == 0) {
             this.scatterChartOptions = new GlobalChartOptions().scatterChartOptions;
@@ -1438,75 +1189,56 @@ class ScatterChartComponent {
             }
         }
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
     }
-    /**
-     * @param {?} __0
-     * @return {?}
-     */
     chartClicked({ event, active }) {
         if (active.length > 0) {
             this.chartClick.emit(active[0]);
         }
     }
-    /**
-     * @param {?} __0
-     * @return {?}
-     */
     chartHovered({ event, active }) {
         if (active.length > 0) {
             this.chartHover.emit(active[0]);
         }
     }
 }
-ScatterChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'lib-scatter-chart',
-                template: "<div style=\"display: block\">\n  <canvas baseChart\n    [datasets]=\"scatterChartData\"\n    [options]=\"scatterChartOptions\"\n    [labels]=\"scatterChartLabels\"\n    [colors]=\"scatterChartColors\"\n    [chartType]=\"'scatter'\"\n    (chartHover)=\"chartHovered($event)\"\n    (chartClick)=\"chartClicked($event)\">\n  </canvas>\n</div>",
-                styles: [""]
-            }] }
-];
-/** @nocollapse */
-ScatterChartComponent.ctorParameters = () => [];
-ScatterChartComponent.propDecorators = {
-    scatterChartOptions: [{ type: Input }],
-    scatterChartLabels: [{ type: Input }],
-    scatterChartData: [{ type: Input }],
-    scatterChartColors: [{ type: Input }],
-    simpleChartConfig: [{ type: Input }],
-    chartClick: [{ type: Output }],
-    chartHover: [{ type: Output }]
-};
+ScatterChartComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: ScatterChartComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+ScatterChartComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.1.5", type: ScatterChartComponent, selector: "lib-scatter-chart", inputs: { scatterChartOptions: "scatterChartOptions", scatterChartLabels: "scatterChartLabels", scatterChartData: "scatterChartData", scatterChartColors: "scatterChartColors", simpleChartConfig: "simpleChartConfig" }, outputs: { chartClick: "chartClick", chartHover: "chartHover" }, ngImport: i0, template: "<div style=\"display: block\">\r\n  <canvas baseChart\r\n    [datasets]=\"scatterChartData\"\r\n    [options]=\"scatterChartOptions\"\r\n    [labels]=\"scatterChartLabels\"\r\n    [colors]=\"scatterChartColors\"\r\n    [chartType]=\"'scatter'\"\r\n    (chartHover)=\"chartHovered($event)\"\r\n    (chartClick)=\"chartClicked($event)\">\r\n  </canvas>\r\n</div>", styles: [""], directives: [{ type: i1.BaseChartDirective, selector: "canvas[baseChart]", inputs: ["options", "data", "datasets", "labels", "chartType", "colors", "legend", "plugins"], outputs: ["chartClick", "chartHover"], exportAs: ["base-chart"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: ScatterChartComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'lib-scatter-chart',
+                    templateUrl: './scatter-chart.component.html',
+                    styleUrls: ['./scatter-chart.component.scss']
+                }]
+        }], ctorParameters: function () { return []; }, propDecorators: { scatterChartOptions: [{
+                type: Input
+            }], scatterChartLabels: [{
+                type: Input
+            }], scatterChartData: [{
+                type: Input
+            }], scatterChartColors: [{
+                type: Input
+            }], simpleChartConfig: [{
+                type: Input
+            }], chartClick: [{
+                type: Output
+            }], chartHover: [{
+                type: Output
+            }] } });
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class TreeLayoutChartComponent {
     constructor() {
         this.selectedSegmentationIndex = -1;
         this.chartClick = new EventEmitter();
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
-        /** @type {?} */
         let _this = this;
         // Set the dimensions and margins of the diagram
-        /** @type {?} */
-        var margin = { top: 20, right: 90, bottom: 30, left: 90 };
-        /** @type {?} */
-        var width = 960 - margin.left - margin.right;
-        /** @type {?} */
-        var height = 700 - margin.top - margin.bottom;
+        var margin = { top: 20, right: 90, bottom: 30, left: 90 }, width = 960 - margin.left - margin.right, height = 700 - margin.top - margin.bottom;
         // append the svg object to the body of the page
         // appends a 'group' element to 'svg'
         // moves the 'group' element to the top left margin
-        /** @type {?} */
         var svg = d3.select("svg")
             //.attr("width", width + margin.right + margin.left)
             //.attr("height", height + margin.top + margin.bottom)
@@ -1514,54 +1246,39 @@ class TreeLayoutChartComponent {
             .attr("transform", "translate("
             + margin.left + "," + margin.top + ")");
         /*var aspect = width / height;
-            d3.select(window)
-            .on("resize", function() {
-        
-                var targetWidth = svg.node().getBoundingClientRect().width;
-                console.log("targetWidth : " + targetWidth);
-                svg.attr("width", targetWidth);
-                svg.attr("height", targetWidth / aspect);
-            });*/
-        /** @type {?} */
-        var i = 0;
-        /** @type {?} */
-        var duration = 750;
-        /** @type {?} */
-        var root;
+        d3.select(window)
+        .on("resize", function() {
+    
+            var targetWidth = svg.node().getBoundingClientRect().width;
+            console.log("targetWidth : " + targetWidth);
+            svg.attr("width", targetWidth);
+            svg.attr("height", targetWidth / aspect);
+        });*/
+        var i = 0, duration = 750, root;
         // declares a tree layout and assigns the size
-        /** @type {?} */
         var treemap = d3.tree().size([height, width]);
         // Assigns parent, children, height, depth
-        root = d3.hierarchy(this.treeData, (/**
-         * @param {?} d
-         * @return {?}
-         */
-        function (d) { return d.children; }));
+        root = d3.hierarchy(this.treeData, function (d) { return d.children; });
         root.x0 = height / 2;
         root.y0 = 0;
         // Collapse after the second level
         //root.children.forEach(collapse);
         update(root);
-        /**
-         * @param {?} source
-         * @return {?}
-         */
+        // Collapse the node and all it's children
+        function collapse(d) {
+            if (d.children) {
+                d._children = d.children;
+                d._children.forEach(collapse);
+                d.children = null;
+            }
+        }
         function update(source) {
             // Assigns the x and y position for the nodes
-            /** @type {?} */
             var treeData = treemap(root);
             // Compute the new tree layout.
-            /** @type {?} */
-            var nodes = treeData.descendants();
-            /** @type {?} */
-            var links = treeData.descendants().slice(1);
+            var nodes = treeData.descendants(), links = treeData.descendants().slice(1);
             // Normalize for fixed-depth.
-            nodes.forEach((/**
-             * @param {?} d
-             * @param {?} i
-             * @return {?}
-             */
-            function (d, i) {
+            nodes.forEach(function (d, i) {
                 console.log(i + ", d.depth " + d.depth);
                 d.y = 0;
                 switch (d.depth) {
@@ -1576,105 +1293,61 @@ class TreeLayoutChartComponent {
                         break;
                     default: d.y = d.depth * 90;
                 }
-            }));
+            });
             // ****************** Nodes section ***************************
             // Update the nodes...
-            /** @type {?} */
             var node = svg.selectAll('g.node')
-                .data(nodes, (/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) { return d.id || (d.id = ++i); }));
+                .data(nodes, function (d) { return d.id || (d.id = ++i); });
             // Enter any new modes at the parent's previous position.
-            /** @type {?} */
             var nodeEnter = node.enter().append('g')
                 .attr('class', 'node')
-                .attr("id", (/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) { return 'g-' + d.id; }))
-                .attr("transform", (/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) {
+                .attr("id", function (d) { return 'g-' + d.id; })
+                .attr("transform", function (d) {
                 return "translate(" + source.y0 + "," + source.x0 + ")";
-            }))
+            })
                 .on('click', click);
             // Add Circle for the nodes
             nodeEnter.append('circle')
                 .attr('class', 'node')
                 .attr('r', 1e-6)
-                .style("fill", (/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) {
+                .style("fill", function (d) {
                 //return d._children ? "lightsteelblue" : "#fff";
                 return d.children || d._children ? "#fff" : "#82b1c6";
-            }));
+            });
             // Add labels for the nodes
             nodeEnter.append('text')
                 .attr("dy", ".35em")
-                .attr("x", (/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) {
+                .attr("x", function (d) {
                 //return d.children || d._children ? -13 : 13;
                 return -13;
-            }))
-                .attr("text-anchor", (/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) {
+            })
+                .attr("text-anchor", function (d) {
                 //return d.children || d._children ? "end" : "start";
                 return "end";
-            }))
-                .text((/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) { return d.data.name; }));
+            })
+                .text(function (d) { return d.data.name; });
             // UPDATE
-            /** @type {?} */
             var nodeUpdate = nodeEnter.merge(node);
             // Transition to the proper position for the node
             nodeUpdate.transition()
                 .duration(duration)
-                .attr("transform", (/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) {
+                .attr("transform", function (d) {
                 return "translate(" + d.y + "," + d.x + ")";
-            }));
+            });
             // Update the node attributes and style
             nodeUpdate.select('circle.node')
                 .attr('r', 10)
-                .style("fill", (/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) {
+                .style("fill", function (d) {
                 //return d._children ? "lightsteelblue" : "#fff";
                 return d.children || d._children ? "#fff" : "#82b1c6";
-            }))
+            })
                 .attr('cursor', 'pointer');
             // Remove any exiting nodes
-            /** @type {?} */
             var nodeExit = node.exit().transition()
                 .duration(duration)
-                .attr("transform", (/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) {
+                .attr("transform", function (d) {
                 return "translate(" + source.y + "," + source.x + ")";
-            }))
+            })
                 .remove();
             // On exit reduce the node circles size to 0
             nodeExit.select('circle')
@@ -1684,68 +1357,36 @@ class TreeLayoutChartComponent {
                 .style('fill-opacity', 1e-6);
             // ****************** links section ***************************
             // Update the links...
-            /** @type {?} */
             var link = svg.selectAll('path.link')
-                .data(links, (/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) { return d.id; }));
+                .data(links, function (d) { return d.id; });
             // Enter any new links at the parent's previous position.
-            /** @type {?} */
             var linkEnter = link.enter().insert('path', "g")
                 .attr("class", "link")
-                .attr('d', (/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) {
-                /** @type {?} */
+                .attr('d', function (d) {
                 var o = { x: source.x0, y: source.y0 };
                 return diagonal(o, o);
-            }));
+            });
             // UPDATE
-            /** @type {?} */
             var linkUpdate = linkEnter.merge(link);
             // Transition back to the parent element position
             linkUpdate.transition()
                 .duration(duration)
-                .attr('d', (/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) { return diagonal(d, d.parent); }));
+                .attr('d', function (d) { return diagonal(d, d.parent); });
             // Remove any exiting links
-            /** @type {?} */
             var linkExit = link.exit().transition()
                 .duration(duration)
-                .attr('d', (/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) {
-                /** @type {?} */
+                .attr('d', function (d) {
                 var o = { x: source.x, y: source.y };
                 return diagonal(o, o);
-            }))
+            })
                 .remove();
             // Store the old positions for transition.
-            nodes.forEach((/**
-             * @param {?} d
-             * @return {?}
-             */
-            function (d) {
+            nodes.forEach(function (d) {
                 d.x0 = d.x;
                 d.y0 = d.y;
-            }));
+            });
             // Creates a curved (diagonal) path from parent to the child nodes
-            /**
-             * @param {?} s
-             * @param {?} d
-             * @return {?}
-             */
             function diagonal(s, d) {
-                /** @type {?} */
                 var path = `M ${s.y} ${s.x}
             C ${(s.y + d.y) / 2} ${s.x},
               ${(s.y + d.y) / 2} ${d.x},
@@ -1753,10 +1394,6 @@ class TreeLayoutChartComponent {
                 return path;
             }
             // Toggle children on click.
-            /**
-             * @param {?} d
-             * @return {?}
-             */
             function click(d) {
                 if (d.children) {
                     d._children = d.children;
@@ -1767,7 +1404,6 @@ class TreeLayoutChartComponent {
                     d._children = null;
                 }
                 update(d);
-                /** @type {?} */
                 let index = -1;
                 d3.selectAll("g.node").attr('class', 'node');
                 if (d.data.index || d.data.index >= 0) {
@@ -1782,25 +1418,23 @@ class TreeLayoutChartComponent {
         }
     }
 }
-TreeLayoutChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'lib-tree-layout-chart',
-                template: "<svg width=\"100%\" height=\"700\" viewBox=\"0 0 500 700\" preserveAspectRatio=\"xMidYMid meet\">  \n  <rect fill=\"#fbfbfb\" width=\"100%\" height=\"100%\"></rect>\n</svg>",
-                styles: [":host ::ng-deep .node circle{fill:#fff;stroke:#247ba0;stroke-width:1px}:host ::ng-deep .node.select circle{stroke-width:3px;fill:#f398b0;stroke:#eb547c}:host ::ng-deep .node text{font:10px sans-serif}:host ::ng-deep .link{fill:none;stroke:#ccc;stroke-width:2px}"]
-            }] }
-];
-/** @nocollapse */
-TreeLayoutChartComponent.ctorParameters = () => [];
-TreeLayoutChartComponent.propDecorators = {
-    selectedSegmentationIndex: [{ type: Input }],
-    chartClick: [{ type: Output }],
-    treeData: [{ type: Input }]
-};
+TreeLayoutChartComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: TreeLayoutChartComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+TreeLayoutChartComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.1.5", type: TreeLayoutChartComponent, selector: "lib-tree-layout-chart", inputs: { selectedSegmentationIndex: "selectedSegmentationIndex", treeData: "treeData" }, outputs: { chartClick: "chartClick" }, ngImport: i0, template: "<svg width=\"100%\" height=\"700\" viewBox=\"0 0 500 700\" preserveAspectRatio=\"xMidYMid meet\">  \r\n  <rect fill=\"#fbfbfb\" width=\"100%\" height=\"100%\"></rect>\r\n</svg>", styles: [":host ::ng-deep .node circle{fill:#fff;stroke:#247ba0;stroke-width:1px}:host ::ng-deep .node.select circle{stroke-width:3px;fill:#f398b0;stroke:#eb547c}:host ::ng-deep .node text{font:10px sans-serif}:host ::ng-deep .link{fill:none;stroke:#ccc;stroke-width:2px}\n"] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: TreeLayoutChartComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'lib-tree-layout-chart',
+                    templateUrl: './tree-layout-chart.component.html',
+                    styleUrls: ['./tree-layout-chart.component.scss']
+                }]
+        }], ctorParameters: function () { return []; }, propDecorators: { selectedSegmentationIndex: [{
+                type: Input
+            }], chartClick: [{
+                type: Output
+            }], treeData: [{
+                type: Input
+            }] } });
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class VariableWidthChartComponent {
     constructor() {
         this.generatedChartData = [{
@@ -1816,7 +1450,6 @@ class VariableWidthChartComponent {
         this.variableWidthChartLegend = true;
         this.variableWidthChartOptions = {};
         this.limitLineColor = {
-            // red
             fill: false,
             borderColor: 'rgba(235, 84, 124, 1)',
             borderWidth: 1.5,
@@ -1836,49 +1469,29 @@ class VariableWidthChartComponent {
             ['#a6a6a5', '#b7b7b6', '#c8c8c7', '#d9d9d8']
         ];
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (!this.variableWidthChartOptions || Object.keys(this.variableWidthChartOptions).length == 0) {
             this.variableWidthChartOptions = new GlobalChartOptions().variableWidthChartOptions;
         }
         this.buildChartData();
     }
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (!this.variableWidthChartOptions || Object.keys(this.variableWidthChartOptions).length == 0) {
             this.variableWidthChartOptions = new GlobalChartOptions().variableWidthChartOptions;
         }
         this.buildChartData();
     }
-    /**
-     * @private
-     * @return {?}
-     */
     buildChartData() {
         if (!this.variableWidthChartData) {
             return;
         }
         this.generatedChartData = [];
         this.generatedChartColors = [];
-        /** @type {?} */
         let _this = this;
-        /** @type {?} */
         let start = 0;
-        /** @type {?} */
         let index = 1;
-        /** @type {?} */
         let previousState = -1;
-        this.variableWidthChartData.map((/**
-         * @param {?} d
-         * @return {?}
-         */
-        function (d) {
-            /** @type {?} */
+        this.variableWidthChartData.map(function (d) {
             let end = start + d.xValue;
             _this.generatedChartData.push({
                 type: 'line',
@@ -1894,7 +1507,7 @@ class VariableWidthChartComponent {
             }
             _this.generatedChartColors.push(_this.getVolumeAllocationColor(d.state, index));
             start = end;
-        }));
+        });
         if (this.limitLineData) {
             this.generatedChartData.unshift({
                 type: 'line',
@@ -1905,19 +1518,10 @@ class VariableWidthChartComponent {
         }
         _this.chart.update();
     }
-    /**
-     * @private
-     * @param {?} state
-     * @param {?} index
-     * @return {?}
-     */
     getVolumeAllocationColor(state, index) {
-        /** @type {?} */
         let bg = this.volumeAllocaitonColors[0][0];
-        /** @type {?} */
         let border = this.volumeAllocaitonColors[0][0];
         // state : 0=win, 1=confirm, 2=current, 4=balance
-        /** @type {?} */
         let color = this.volumeAllocaitonColors[state];
         bg = color[index % color.length];
         border = bg;
@@ -1936,27 +1540,28 @@ class VariableWidthChartComponent {
         };
     }
 }
-VariableWidthChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'lib-variable-width-chart',
-                template: "<div style=\"display: block\">\n  <canvas #chart baseChart height=\"150\"\n    [datasets]=\"generatedChartData\"\n    [options]=\"variableWidthChartOptions\"\n    [colors]=\"generatedChartColors\"\n    [legend]=\"variableWidthChartLegend\"\n    [chartType]=\"'bubble'\">\n  </canvas>\n</div>\n",
-                styles: [""]
-            }] }
-];
-/** @nocollapse */
-VariableWidthChartComponent.ctorParameters = () => [];
-VariableWidthChartComponent.propDecorators = {
-    chart: [{ type: ViewChild, args: [BaseChartDirective,] }],
-    variableWidthChartData: [{ type: Input }],
-    limitLineData: [{ type: Input }],
-    variableWidthChartLegend: [{ type: Input }],
-    variableWidthChartOptions: [{ type: Input }]
-};
+VariableWidthChartComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: VariableWidthChartComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+VariableWidthChartComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.1.5", type: VariableWidthChartComponent, selector: "lib-variable-width-chart", inputs: { variableWidthChartData: "variableWidthChartData", limitLineData: "limitLineData", variableWidthChartLegend: "variableWidthChartLegend", variableWidthChartOptions: "variableWidthChartOptions" }, viewQueries: [{ propertyName: "chart", first: true, predicate: BaseChartDirective, descendants: true }], usesOnChanges: true, ngImport: i0, template: "<div style=\"display: block\">\r\n  <canvas #chart baseChart height=\"150\"\r\n    [datasets]=\"generatedChartData\"\r\n    [options]=\"variableWidthChartOptions\"\r\n    [colors]=\"generatedChartColors\"\r\n    [legend]=\"variableWidthChartLegend\"\r\n    [chartType]=\"'bubble'\">\r\n  </canvas>\r\n</div>\r\n", styles: [""], directives: [{ type: i1.BaseChartDirective, selector: "canvas[baseChart]", inputs: ["options", "data", "datasets", "labels", "chartType", "colors", "legend", "plugins"], outputs: ["chartClick", "chartHover"], exportAs: ["base-chart"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: VariableWidthChartComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'lib-variable-width-chart',
+                    templateUrl: './variable-width-chart.component.html',
+                    styleUrls: ['./variable-width-chart.component.scss']
+                }]
+        }], ctorParameters: function () { return []; }, propDecorators: { chart: [{
+                type: ViewChild,
+                args: [BaseChartDirective]
+            }], variableWidthChartData: [{
+                type: Input
+            }], limitLineData: [{
+                type: Input
+            }], variableWidthChartLegend: [{
+                type: Input
+            }], variableWidthChartOptions: [{
+                type: Input
+            }] } });
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class WaterfallChartComponent {
     constructor() {
         this.waterfallChartOptions = {};
@@ -1970,58 +1575,31 @@ class WaterfallChartComponent {
             modeBarButtonsToRemove: ['pan2d', 'lasso2d']
         };
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         this.waterfallData = [];
         this.dataProcessing();
     }
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (changes['waterfallChartData']) {
             this.waterfallData = [];
             this.dataProcessing();
         }
     }
-    /**
-     * @return {?}
-     */
     dataProcessing() {
         if (!this.waterfallChartOptions || Object.keys(this.waterfallChartOptions).length == 0) {
             this.waterfallChartOptions = new GlobalChartOptions().waterfallChartOptions;
         }
-        /** @type {?} */
         let datasetIndex = 0;
-        /** @type {?} */
         let comparedIndex = 0;
-        /** @type {?} */
         let _this = this;
-        this.waterfallChartData.forEach((/**
-         * @param {?} chartData
-         * @return {?}
-         */
-        chartData => {
-            /** @type {?} */
+        this.waterfallChartData.forEach(chartData => {
             let measures = [];
-            /** @type {?} */
             let xLabels = [];
-            /** @type {?} */
             let dataLabels = [];
-            /** @type {?} */
             let yValues = [];
-            /** @type {?} */
             let hoverinfos = [];
-            /** @type {?} */
             let index = 0;
-            chartData.waterfallItemData.forEach((/**
-             * @param {?} itemData
-             * @return {?}
-             */
-            itemData => {
+            chartData.waterfallItemData.forEach(itemData => {
                 if (!itemData.hidden) {
                     measures.push(itemData.measure);
                     dataLabels.push(itemData.dataLabel);
@@ -2039,18 +1617,14 @@ class WaterfallChartComponent {
                 }
                 xLabels.push(itemData.itemlabel);
                 index++;
-            }));
+            });
             if (_this.waterfallExtendedChartData && _this.waterfallExtendedChartData[datasetIndex]) {
                 measures.push('absolute');
                 dataLabels.push('');
                 yValues.push(0);
                 hoverinfos.push('none');
                 xLabels.push('');
-                _this.waterfallExtendedChartData[datasetIndex].waterfallItemData.forEach((/**
-                 * @param {?} extendedData
-                 * @return {?}
-                 */
-                extendedData => {
+                _this.waterfallExtendedChartData[datasetIndex].waterfallItemData.forEach(extendedData => {
                     if (!extendedData.hidden) {
                         measures.push(extendedData.measure);
                         dataLabels.push(extendedData.dataLabel);
@@ -2064,7 +1638,7 @@ class WaterfallChartComponent {
                         hoverinfos.push('none');
                     }
                     xLabels.push(extendedData.itemlabel);
-                }));
+                });
             }
             if (!chartData.connectorColor) {
                 chartData.connectorColor = 'rgba(36,123,160,0.5)';
@@ -2072,7 +1646,6 @@ class WaterfallChartComponent {
             if (!chartData.connectorWidth) {
                 chartData.connectorWidth = 1;
             }
-            /** @type {?} */
             let data = {
                 name: chartData.name,
                 type: 'waterfall',
@@ -2095,28 +1668,15 @@ class WaterfallChartComponent {
             };
             this.waterfallData.push(data);
             datasetIndex++;
-        }));
+        });
         if (this.waterfallExtendedChartData) {
-            /** @type {?} */
             let min = 0;
-            /** @type {?} */
             let max = 0;
-            /** @type {?} */
             let comparedValue = 0;
-            this.waterfallData.forEach((/**
-             * @param {?} data
-             * @return {?}
-             */
-            data => {
-                /** @type {?} */
+            this.waterfallData.forEach(data => {
                 let total = 0;
-                /** @type {?} */
                 let i = 0;
-                data.measure.forEach((/**
-                 * @param {?} measure
-                 * @return {?}
-                 */
-                measure => {
+                data.measure.forEach(measure => {
                     if (measure == 'absolute') {
                         total = data.y[i];
                     }
@@ -2133,8 +1693,8 @@ class WaterfallChartComponent {
                         comparedValue = total;
                     }
                     i++;
-                }));
-            }));
+                });
+            });
             this.waterfallChartOptions.shapes = [{
                     x0: this.waterfallChartData[0].waterfallItemData.length,
                     x1: this.waterfallChartData[0].waterfallItemData.length,
@@ -2182,55 +1742,43 @@ class WaterfallChartComponent {
                 }];
         }
     }
-    /**
-     * @param {?} event
-     * @return {?}
-     */
     chartClicked(event) {
         if (!(event instanceof MouseEvent)) {
             this.chartClick.emit(event);
         }
     }
-    /**
-     * @param {?} event
-     * @return {?}
-     */
     chartHovered(event) {
         this.chartHover.emit(event);
     }
-    /**
-     * @param {?} event
-     * @return {?}
-     */
     chartAfterPlotted(event) {
-        /** @type {?} */
         let _this = this;
-        selectAll('.xaxislayer-above').selectAll('text').on('click', (/**
-         * @param {?} d
-         * @return {?}
-         */
-        function (d) {
+        d3$1.selectAll('.xaxislayer-above').selectAll('text').on('click', function (d) {
             _this.labelClick.emit(d.text);
-        }));
+        });
     }
 }
-WaterfallChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'lib-waterfall-chart',
-                template: "<div>\n    <plotly-plot [data]=\"waterfallData\" [layout]=\"waterfallChartOptions\" [config]=\"waterfallChartConfig\" \n      [revision]=\"0\" [debug]=\"true\" [useResizeHandler]=\"true\"\n      (click)=\"chartClicked($event)\" (hover)=\"chartHovered($event)\" (afterPlot)=\"chartAfterPlotted($event)\">\n    </plotly-plot>\n</div>\n",
-                styles: [":host /deep/ .xaxislayer-above{cursor:pointer;pointer-events:all}"]
-            }] }
-];
-/** @nocollapse */
-WaterfallChartComponent.ctorParameters = () => [];
-WaterfallChartComponent.propDecorators = {
-    waterfallChartData: [{ type: Input }],
-    waterfallExtendedChartData: [{ type: Input }],
-    waterfallChartOptions: [{ type: Input }],
-    chartClick: [{ type: Output }],
-    chartHover: [{ type: Output }],
-    labelClick: [{ type: Output }]
-};
+WaterfallChartComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: WaterfallChartComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+WaterfallChartComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.1.5", type: WaterfallChartComponent, selector: "lib-waterfall-chart", inputs: { waterfallChartData: "waterfallChartData", waterfallExtendedChartData: "waterfallExtendedChartData", waterfallChartOptions: "waterfallChartOptions" }, outputs: { chartClick: "chartClick", chartHover: "chartHover", labelClick: "labelClick" }, usesOnChanges: true, ngImport: i0, template: "<div>\r\n    <plotly-plot [data]=\"waterfallData\" [layout]=\"waterfallChartOptions\" [config]=\"waterfallChartConfig\" \r\n      [revision]=\"0\" [debug]=\"true\" [useResizeHandler]=\"true\"\r\n      (click)=\"chartClicked($event)\" (hover)=\"chartHovered($event)\" (afterPlot)=\"chartAfterPlotted($event)\">\r\n    </plotly-plot>\r\n</div>\r\n", styles: [":host ::ng-deep .xaxislayer-above{cursor:pointer;pointer-events:all}\n"], components: [{ type: i1$1.PlotComponent, selector: "plotly-plot", inputs: ["revision", "debug", "useResizeHandler", "data", "layout", "config", "frames", "style", "divId", "className"], outputs: ["initialized", "update", "purge", "error", "afterExport", "afterPlot", "animated", "animatingFrame", "animationInterrupted", "autoSize", "beforeExport", "buttonClicked", "click", "clickAnnotation", "deselect", "doubleClick", "framework", "hover", "legendClick", "legendDoubleClick", "relayout", "restyle", "redraw", "selected", "selecting", "sliderChange", "sliderEnd", "sliderStart", "transitioning", "transitionInterrupted", "unhover"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: WaterfallChartComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'lib-waterfall-chart',
+                    templateUrl: './waterfall-chart.component.html',
+                    styleUrls: ['./waterfall-chart.component.scss']
+                }]
+        }], ctorParameters: function () { return []; }, propDecorators: { waterfallChartData: [{
+                type: Input
+            }], waterfallExtendedChartData: [{
+                type: Input
+            }], waterfallChartOptions: [{
+                type: Input
+            }], chartClick: [{
+                type: Output
+            }], chartHover: [{
+                type: Output
+            }], labelClick: [{
+                type: Output
+            }] } });
 class WaterfallChartData {
     constructor() {
         this.decreasingColor = GlobalChartColors.globalBackgroundColors[0];
@@ -2247,10 +1795,6 @@ class WaterfallItemData {
     }
 }
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 class WaterfallPluginChartComponent {
     constructor() {
         this.plugins = [waterfallPlugin];
@@ -2269,36 +1813,18 @@ class WaterfallPluginChartComponent {
             },
         };
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         this.adaptDataForPlugin();
     }
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
     }
-    /**
-     * @private
-     * @return {?}
-     */
     adaptDataForPlugin() {
         if (!this.waterfallPluginChartData) {
             return;
         }
-        /** @type {?} */
         const adaptedData = [];
-        /** @type {?} */
         let currentTotal = 0;
-        this.waterfallPluginChartData.forEach((/**
-         * @param {?} v
-         * @param {?} idx
-         * @return {?}
-         */
-        (v, idx) => {
+        this.waterfallPluginChartData.forEach((v, idx) => {
             if (!!v.total) {
                 currentTotal = v.data;
             }
@@ -2326,7 +1852,6 @@ class WaterfallPluginChartComponent {
                 });
             }
             else {
-                /** @type {?} */
                 let backgroundColor = [];
                 if (v.total) {
                     backgroundColor = ['rgba(255, 99, 132, 0.5)'];
@@ -2346,104 +1871,124 @@ class WaterfallPluginChartComponent {
                     stack: `${idx}`
                 });
             }
-        }));
+        });
         this.chartData = {
             labels: ['Waterfall Model'],
             datasets: adaptedData
         };
     }
-    /**
-     * @param {?} event
-     * @return {?}
-     */
     chartClicked(event) {
         this.chartClick.emit(event);
     }
-    /**
-     * @param {?} event
-     * @return {?}
-     */
     chartHovered(event) {
         this.chartHover.emit(event);
     }
 }
-WaterfallPluginChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'lib-waterfall-plugin-chart',
-                template: "<lib-base-chart type=\"bar\" [data]=\"chartData\" [plugins]=\"plugins\" [options]=\"options\"\n  (chartHover)=\"chartHovered($event)\"\n  (chartClick)=\"chartClicked($event)\">\n</lib-base-chart>\n",
-                styles: [""]
-            }] }
-];
-/** @nocollapse */
-WaterfallPluginChartComponent.ctorParameters = () => [];
-WaterfallPluginChartComponent.propDecorators = {
-    waterfallPluginChartData: [{ type: Input }],
-    chartClick: [{ type: Output }],
-    chartHover: [{ type: Output }]
-};
+WaterfallPluginChartComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: WaterfallPluginChartComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+WaterfallPluginChartComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.1.5", type: WaterfallPluginChartComponent, selector: "lib-waterfall-plugin-chart", inputs: { waterfallPluginChartData: "waterfallPluginChartData" }, outputs: { chartClick: "chartClick", chartHover: "chartHover" }, usesOnChanges: true, ngImport: i0, template: "<lib-base-chart type=\"bar\" [data]=\"chartData\" [plugins]=\"plugins\" [options]=\"options\"\r\n  (chartHover)=\"chartHovered($event)\"\r\n  (chartClick)=\"chartClicked($event)\">\r\n</lib-base-chart>\r\n", styles: [""], components: [{ type: BaseChartComponent, selector: "lib-base-chart", inputs: ["type", "data", "options", "plugins"], outputs: ["chartClick", "chartHover"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: WaterfallPluginChartComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'lib-waterfall-plugin-chart',
+                    templateUrl: './waterfall-plugin-chart.component.html',
+                    styleUrls: ['./waterfall-plugin-chart.component.scss']
+                }]
+        }], ctorParameters: function () { return []; }, propDecorators: { waterfallPluginChartData: [{
+                type: Input
+            }], chartClick: [{
+                type: Output
+            }], chartHover: [{
+                type: Output
+            }] } });
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 // PlotlyModule.plotlyjs = PlotlyJS;
 PlotlyViaCDNModule.plotlyVersion = "1.50.0"; // can be `latest` or any version number (i.e.: '1.40.0')
-// can be `latest` or any version number (i.e.: '1.40.0')
 PlotlyViaCDNModule.plotlyBundleNames = ['cartesian', 'finance']; // optional: can be null (for full) or 'basic', 'cartesian', 'geo', 'gl3d', 'gl2d', 'mapbox' or 'finance'
-// optional: can be null (for full) or 'basic', 'cartesian', 'geo', 'gl3d', 'gl2d', 'mapbox' or 'finance'
 class ChartLibModule {
 }
-ChartLibModule.decorators = [
-    { type: NgModule, args: [{
-                declarations: [
-                    ChartLibComponent,
-                    BarChartComponent,
-                    BoxPlotChartComponent,
-                    CombinedCategoryChartComponent,
-                    CombinedMeasureChartComponent,
-                    LineChartComponent,
-                    PieChartComponent,
-                    ScatterChartComponent,
-                    TreeLayoutChartComponent,
-                    VariableWidthChartComponent,
-                    WaterfallChartComponent,
-                    WaterfallPluginChartComponent,
-                    BaseChartComponent
-                ],
-                imports: [
-                    CommonModule,
-                    ChartsModule,
-                    PlotlyViaCDNModule
-                ],
-                exports: [
-                    ChartLibComponent,
-                    BarChartComponent,
-                    BoxPlotChartComponent,
-                    CombinedCategoryChartComponent,
-                    CombinedMeasureChartComponent,
-                    LineChartComponent,
-                    PieChartComponent,
-                    ScatterChartComponent,
-                    TreeLayoutChartComponent,
-                    VariableWidthChartComponent,
-                    WaterfallChartComponent,
-                    WaterfallPluginChartComponent,
-                    BaseChartComponent,
-                    ChartsModule
-                ]
-            },] }
-];
+ChartLibModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: ChartLibModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+ChartLibModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: ChartLibModule, declarations: [ChartLibComponent,
+        BarChartComponent,
+        BoxPlotChartComponent,
+        CombinedCategoryChartComponent,
+        CombinedMeasureChartComponent,
+        LineChartComponent,
+        PieChartComponent,
+        ScatterChartComponent,
+        TreeLayoutChartComponent,
+        VariableWidthChartComponent,
+        WaterfallChartComponent,
+        WaterfallPluginChartComponent,
+        BaseChartComponent], imports: [CommonModule,
+        ChartsModule,
+        PlotlyViaCDNModule], exports: [ChartLibComponent,
+        BarChartComponent,
+        BoxPlotChartComponent,
+        CombinedCategoryChartComponent,
+        CombinedMeasureChartComponent,
+        LineChartComponent,
+        PieChartComponent,
+        ScatterChartComponent,
+        TreeLayoutChartComponent,
+        VariableWidthChartComponent,
+        WaterfallChartComponent,
+        WaterfallPluginChartComponent,
+        BaseChartComponent,
+        ChartsModule] });
+ChartLibModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: ChartLibModule, imports: [[
+            CommonModule,
+            ChartsModule,
+            PlotlyViaCDNModule
+        ], ChartsModule] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.1.5", ngImport: i0, type: ChartLibModule, decorators: [{
+            type: NgModule,
+            args: [{
+                    declarations: [
+                        ChartLibComponent,
+                        BarChartComponent,
+                        BoxPlotChartComponent,
+                        CombinedCategoryChartComponent,
+                        CombinedMeasureChartComponent,
+                        LineChartComponent,
+                        PieChartComponent,
+                        ScatterChartComponent,
+                        TreeLayoutChartComponent,
+                        VariableWidthChartComponent,
+                        WaterfallChartComponent,
+                        WaterfallPluginChartComponent,
+                        BaseChartComponent
+                    ],
+                    imports: [
+                        CommonModule,
+                        ChartsModule,
+                        PlotlyViaCDNModule
+                    ],
+                    exports: [
+                        ChartLibComponent,
+                        BarChartComponent,
+                        BoxPlotChartComponent,
+                        CombinedCategoryChartComponent,
+                        CombinedMeasureChartComponent,
+                        LineChartComponent,
+                        PieChartComponent,
+                        ScatterChartComponent,
+                        TreeLayoutChartComponent,
+                        VariableWidthChartComponent,
+                        WaterfallChartComponent,
+                        WaterfallPluginChartComponent,
+                        BaseChartComponent,
+                        ChartsModule
+                    ]
+                }]
+        }] });
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+/*
+ * Public API Surface of chart-lib
  */
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-export { ChartLibService, ChartLibComponent, ChartLibModule, BarChartComponent, SimpleChartConfig, GlobalChartColors, GlobalChartOptions, BoxPlotChartComponent, BoxPlotChartData, CombinedCategoryChartComponent, CombinedMeasureChartComponent, LineChartComponent, PieChartComponent, ScatterChartComponent, TreeLayoutChartComponent, VariableWidthChartComponent, WaterfallChartComponent, WaterfallChartData, WaterfallItemData, WaterfallPluginChartComponent, BaseChartComponent };
-
+export { BarChartComponent, BaseChartComponent, BoxPlotChartComponent, BoxPlotChartData, ChartLibComponent, ChartLibModule, ChartLibService, CombinedCategoryChartComponent, CombinedMeasureChartComponent, GlobalChartColors, GlobalChartOptions, LineChartComponent, PieChartComponent, ScatterChartComponent, SimpleChartConfig, TreeLayoutChartComponent, VariableWidthChartComponent, WaterfallChartComponent, WaterfallChartData, WaterfallItemData, WaterfallPluginChartComponent };
 //# sourceMappingURL=chart-lib.js.map

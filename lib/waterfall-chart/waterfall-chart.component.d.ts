@@ -1,4 +1,5 @@
-import { OnInit, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { EventEmitter, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import * as i0 from "@angular/core";
 export declare class WaterfallChartComponent implements OnInit, OnChanges {
     waterfallChartData: WaterfallChartData[];
     waterfallExtendedChartData: WaterfallChartData[];
@@ -15,6 +16,8 @@ export declare class WaterfallChartComponent implements OnInit, OnChanges {
     chartClicked(event: any): void;
     chartHovered(event: any): void;
     chartAfterPlotted(event: any): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<WaterfallChartComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<WaterfallChartComponent, "lib-waterfall-chart", never, { "waterfallChartData": "waterfallChartData"; "waterfallExtendedChartData": "waterfallExtendedChartData"; "waterfallChartOptions": "waterfallChartOptions"; }, { "chartClick": "chartClick"; "chartHover": "chartHover"; "labelClick": "labelClick"; }, never, never>;
 }
 export declare class WaterfallChartData {
     name: string;

@@ -1,4 +1,5 @@
 import { OnInit, EventEmitter } from '@angular/core';
+import * as i0 from "@angular/core";
 export declare class BoxPlotChartComponent implements OnInit {
     boxPlotChartOptions: any;
     boxPlotChartData: BoxPlotChartData[];
@@ -12,6 +13,8 @@ export declare class BoxPlotChartComponent implements OnInit {
     chartClicked(event: any): void;
     chartHovered(event: any): void;
     chartAfterPlotted(event: any): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<BoxPlotChartComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<BoxPlotChartComponent, "lib-box-plot-chart", never, { "boxPlotChartOptions": "boxPlotChartOptions"; "boxPlotChartData": "boxPlotChartData"; }, { "chartClick": "chartClick"; "chartHover": "chartHover"; "labelClick": "labelClick"; }, never, never>;
 }
 export declare class BoxPlotChartData {
     yValues: number[];

@@ -2,6 +2,7 @@ import { OnInit, EventEmitter } from '@angular/core';
 import { ChartOptions, ChartDataSets } from 'chart.js';
 import { Label, BaseChartDirective } from 'ng2-charts';
 import { SimpleChartConfig } from '../simple-chart-config';
+import * as i0 from "@angular/core";
 export declare class BarChartComponent implements OnInit {
     barChartOptions: ChartOptions;
     barChartLabels: Label[];
@@ -25,4 +26,6 @@ export declare class BarChartComponent implements OnInit {
         event: MouseEvent;
         active: {}[];
     }): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<BarChartComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<BarChartComponent, "lib-bar-chart", never, { "barChartOptions": "barChartOptions"; "barChartLabels": "barChartLabels"; "barChartLegend": "barChartLegend"; "barChartData": "barChartData"; "barChartPlugins": "barChartPlugins"; "barChartColors": "barChartColors"; "simpleChartConfig": "simpleChartConfig"; }, { "chartClick": "chartClick"; "chartHover": "chartHover"; "labelClick": "labelClick"; }, never, never>;
 }

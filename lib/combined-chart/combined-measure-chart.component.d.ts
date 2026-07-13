@@ -2,6 +2,7 @@ import { OnInit, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { ChartOptions, ChartDataSets } from 'chart.js';
 import { Label, BaseChartDirective } from 'ng2-charts';
 import { SimpleChartConfig } from '../simple-chart-config';
+import * as i0 from "@angular/core";
 export declare class CombinedMeasureChartComponent implements OnInit, OnChanges {
     combinedChartOptions: ChartOptions;
     combinedChartLabels: Label[];
@@ -25,4 +26,6 @@ export declare class CombinedMeasureChartComponent implements OnInit, OnChanges 
         event: MouseEvent;
         active: {}[];
     }): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<CombinedMeasureChartComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<CombinedMeasureChartComponent, "lib-combined-measure-chart", never, { "combinedChartOptions": "combinedChartOptions"; "combinedChartLabels": "combinedChartLabels"; "combinedChartLegend": "combinedChartLegend"; "combinedChartData": "combinedChartData"; "combinedChartPlugins": "combinedChartPlugins"; "combinedChartColors": "combinedChartColors"; "simpleChartConfig": "simpleChartConfig"; }, { "chartClick": "chartClick"; "chartHover": "chartHover"; "labelClick": "labelClick"; }, never, never>;
 }
